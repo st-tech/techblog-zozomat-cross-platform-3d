@@ -1,0 +1,91 @@
+#include <jni.h>
+#include <string>
+
+#include <android/log.h>
+
+#define APPNAME "com.zozo.ztr_android"
+
+#include <EGL/egl.h>
+//// Include the latest possible header file( GL version header )
+//// #if __ANDROID_API__ >= 24
+//// #include <GLES3/gl32.h>
+//// #elif __ANDROID_API__ >= 21
+//// #include <GLES3/gl31.h>
+//// #else
+//// #include <GLES3/gl3.h>
+//// #endif
+//// #include <GLES3/gl3.h>
+
+#import "foot_renderer.h"
+
+#include <android/asset_manager.h>
+#include <android/asset_manager_jni.h>
+#include <assert.h>
+
+static ztr_platform_api_t g_platform;
+
+static AAssetManager* asset_manager;
+
+static JavaVM* javaVm;
+
+static ztr_hid_t hid;
+
+PLATFORM_OPEN_RESOURCE_FILE(openResourceFile) {
+
+    assert (filePath != NULL);
+
+    ztr_file_t result = {};
+
+    AAsset *asset = AAssetManager_open (asset_manager, filePath, AASSET_MODE_STREAMING);
+    assert (asset != NULL);
+
+    if (asset != NULL)
+    {
+        result.data = (void *) AAsset_getBuffer (asset);
+        result.dataSize = AAsset_getLength (asset);
+    }
+
+    return (result);
+}
+
+PLATFORM_GET_RESOURCE_PATH(getResourcePath) {
+
+    assert (fileName != NULL);
+    return (fileName);
+}
+
+extern "C" JNIEXPORT void JNICALL
+Java_com_zozo_ztr_1android_ZTRJNILib_init(JNIEnv* env, void *reserved, jobject assetManager) {
+
+    env->GetJavaVM(&javaVm);
+    asset_manager = AAssetManager_fromJava(env, assetManager);
+    g_platform.openResourceFile = openResourceFile;
+    g_platform.getResourcePath = getResourcePath;
+
+    ztrInit (&g_platform);
+}
+
+extern "C" JNIEXPORT void JNICALL
+Java_com_zozo_ztr_1android_ZTRJNILib_draw(JNIEnv* env, jobject obj, jint mouseDown, jint mouseDownUp, jint x, jint y) {
+
+    hid.mouseDown = static_cast<int> (mouseDown);
+    hid.mouseTransition = static_cast<int> (mouseDownUp);
+    hid.mouseX = static_cast<int> (x);
+    hid.mouseY = static_cast<int> (-y);
+
+    ztrDraw (0, hid);
+
+    hid.mouseTransition = 0;
+}
+
+extern "C" JNIEXPORT void JNICALL
+Java_com_zozo_ztr_1android_ZTRJNILib_resize(JNIEnv* env, jobject obj, jint width, jint height) {
+
+    ztrResize (&g_platform, width, height);
+}
+
+extern "C" JNIEXPORT void JNICALL
+Java_com_zozo_ztr_1android_ZTRJNILib_free(JNIEnv* env, jobject obj) {
+
+    ztrFree ();
+}

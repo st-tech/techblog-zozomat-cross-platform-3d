@@ -32,11 +32,11 @@ static ztr_hid_t hid;
 
 PLATFORM_OPEN_RESOURCE_FILE(openResourceFile) {
 
-    assert (filePath != NULL);
+    assert (fileName != NULL);
 
     ztr_file_t result = {};
 
-    AAsset *asset = AAssetManager_open (asset_manager, filePath, AASSET_MODE_STREAMING);
+    AAsset *asset = AAssetManager_open (asset_manager, fileName, AASSET_MODE_STREAMING);
     assert (asset != NULL);
 
     if (asset != NULL)
@@ -48,19 +48,12 @@ PLATFORM_OPEN_RESOURCE_FILE(openResourceFile) {
     return (result);
 }
 
-PLATFORM_GET_RESOURCE_PATH(getResourcePath) {
-
-    assert (fileName != NULL);
-    return (fileName);
-}
-
 extern "C" JNIEXPORT void JNICALL
 Java_com_zozo_ztr_1android_ZTRJNILib_init(JNIEnv* env, void *reserved, jobject assetManager) {
 
     env->GetJavaVM(&javaVm);
     asset_manager = AAssetManager_fromJava(env, assetManager);
     g_platform.openResourceFile = openResourceFile;
-    g_platform.getResourcePath = getResourcePath;
 
     ztrInit (&g_platform);
 }

@@ -2,7 +2,7 @@ package com.zozo.ztr_android
 import android.content.res.AssetManager
 import android.util.Log
 
-public class ZTRJNILib {
+public class RenderLib {
 
     companion object {
         init {

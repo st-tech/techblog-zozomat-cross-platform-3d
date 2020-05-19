@@ -16,18 +16,16 @@
 //// #endif
 //// #include <GLES3/gl3.h>
 
-#import "foot_renderer.h"
+#import "platform_abstraction_layer.h"
 
 #include <android/asset_manager.h>
 #include <android/asset_manager_jni.h>
 #include <assert.h>
 
-static ztr_platform_api_t g_platform;
-
+static JavaVM* javaVm;
 static AAssetManager* asset_manager;
 
-static JavaVM* javaVm;
-
+static ztr_platform_api_t g_platform;
 static ztr_hid_t hid;
 
 PLATFORM_OPEN_RESOURCE_FILE(openResourceFile) {
@@ -49,7 +47,7 @@ PLATFORM_OPEN_RESOURCE_FILE(openResourceFile) {
 }
 
 extern "C" JNIEXPORT void JNICALL
-Java_com_zozo_ztr_1android_ZTRJNILib_init(JNIEnv* env, void *reserved, jobject assetManager) {
+Java_com_zozo_ztr_1android_RenderLib_init(JNIEnv* env, void *reserved, jobject assetManager) {
 
     env->GetJavaVM(&javaVm);
     asset_manager = AAssetManager_fromJava(env, assetManager);
@@ -59,7 +57,7 @@ Java_com_zozo_ztr_1android_ZTRJNILib_init(JNIEnv* env, void *reserved, jobject a
 }
 
 extern "C" JNIEXPORT void JNICALL
-Java_com_zozo_ztr_1android_ZTRJNILib_draw(JNIEnv* env, jobject obj, jint mouseDown, jint mouseDownUp, jint x, jint y) {
+Java_com_zozo_ztr_1android_RenderLib_draw(JNIEnv* env, jobject obj, jint mouseDown, jint mouseDownUp, jint x, jint y) {
 
     hid.mouseDown = static_cast<int> (mouseDown);
     hid.mouseTransition = static_cast<int> (mouseDownUp);
@@ -72,13 +70,13 @@ Java_com_zozo_ztr_1android_ZTRJNILib_draw(JNIEnv* env, jobject obj, jint mouseDo
 }
 
 extern "C" JNIEXPORT void JNICALL
-Java_com_zozo_ztr_1android_ZTRJNILib_resize(JNIEnv* env, jobject obj, jint width, jint height) {
+Java_com_zozo_ztr_1android_RenderLib_resize(JNIEnv* env, jobject obj, jint width, jint height) {
 
     ztrResize (&g_platform, width, height);
 }
 
 extern "C" JNIEXPORT void JNICALL
-Java_com_zozo_ztr_1android_ZTRJNILib_free(JNIEnv* env, jobject obj) {
+Java_com_zozo_ztr_1android_RenderLib_free(JNIEnv* env, jobject obj) {
 
     ztrFree ();
 }

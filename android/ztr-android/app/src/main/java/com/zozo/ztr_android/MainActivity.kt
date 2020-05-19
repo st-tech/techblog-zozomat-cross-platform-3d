@@ -2,8 +2,6 @@ package com.zozo.ztr_android
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
-import java.io.IOException
 
 class MainActivity : AppCompatActivity() {
 
@@ -12,11 +10,11 @@ class MainActivity : AppCompatActivity() {
 
         // TODO: Closure to ensure we only load after the view is shown.
         // Probably not needed, can just fail if the view isn't ready?
-        val onSurfaceCreatedClosure: (view: ZTRJNIView) -> Unit = {
+        val onSurfaceCreatedClosure: (view: RenderView) -> Unit = {
             val assetManager = assets
         }
 
-        var ztrView = ZTRJNIView(application, onSurfaceCreatedClosure)
+        var ztrView = RenderView(application, onSurfaceCreatedClosure)
         setContentView (ztrView)
     }
 }

@@ -17,9 +17,9 @@ add_library( # Sets the name of the library.
         SHARED
 
         # Provides a relative path to your source file(s).
-        ztr_ndk.cpp
+        RenderLib_ndk.cpp
 
-        ${common_DIR}/foot_renderer.cpp)
+        ${common_DIR}/platform_independent_layer.cpp)
 
 # Searches for a specified prebuilt library and stores the path as a
 # variable. Because CMake includes system libraries in the search path by

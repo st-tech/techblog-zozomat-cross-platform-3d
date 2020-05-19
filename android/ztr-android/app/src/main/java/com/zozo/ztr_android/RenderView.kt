@@ -3,12 +3,11 @@ package com.zozo.ztr_android
 import android.content.Context
 import android.content.res.AssetManager
 import android.opengl.GLSurfaceView
-import android.util.Log
 import android.view.MotionEvent
 import javax.microedition.khronos.egl.EGLConfig
 import javax.microedition.khronos.opengles.GL10
 
-class ZTRJNIView(context: Context, onSurfaceCreatedClosure: ((view: ZTRJNIView) -> Unit)?) : GLSurfaceView(context) {
+class RenderView(context: Context, onSurfaceCreatedClosure: ((view: RenderView) -> Unit)?) : GLSurfaceView(context) {
 
     init {
 
@@ -54,24 +53,24 @@ class ZTRJNIView(context: Context, onSurfaceCreatedClosure: ((view: ZTRJNIView) 
 
     inner class Renderer(val assetManager: AssetManager) : GLSurfaceView.Renderer {
 
-        var view: ZTRJNIView? = null
-        var onSurfaceCreatedClosure: ((view: ZTRJNIView) -> Unit)? = null
+        var view: RenderView? = null
+        var onSurfaceCreatedClosure: ((view: RenderView) -> Unit)? = null
 
         override fun onDrawFrame(gl: GL10) {
-            ZTRJNILib.draw(
-                    this@ZTRJNIView._mouseDown,
-                    this@ZTRJNIView._mouseDownUp,
-                    this@ZTRJNIView._mouseX,
-                    this@ZTRJNIView._mouseY
+            RenderLib.draw(
+                    this@RenderView._mouseDown,
+                    this@RenderView._mouseDownUp,
+                    this@RenderView._mouseX,
+                    this@RenderView._mouseY
             )
         }
 
         override fun onSurfaceChanged(gl: GL10, width: Int, height: Int) {
-            ZTRJNILib.resize(width, height)
+            RenderLib.resize(width, height)
         }
 
         override fun onSurfaceCreated(gl: GL10, config: EGLConfig) {
-            ZTRJNILib.init(this.assetManager)
+            RenderLib.init(this.assetManager)
 
             onSurfaceCreatedClosure?.invoke(this.view!!)
         }

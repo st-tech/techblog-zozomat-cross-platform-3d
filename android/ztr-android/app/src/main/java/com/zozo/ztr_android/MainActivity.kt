@@ -14,7 +14,7 @@ class MainActivity : AppCompatActivity() {
             val assetManager = assets
         }
 
-        var ztrView = RenderView(application, onSurfaceCreatedClosure)
-        setContentView (ztrView)
+        var renderView = RenderView(application, onSurfaceCreatedClosure)
+        setContentView (renderView)
     }
 }

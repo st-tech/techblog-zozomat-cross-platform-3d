@@ -16,7 +16,7 @@
 //// #endif
 //// #include <GLES3/gl3.h>
 
-#import "platform_abstraction_layer.h"
+#import "ztr_platform_abstraction_layer.h"
 
 #include <android/asset_manager.h>
 #include <android/asset_manager_jni.h>
@@ -28,15 +28,13 @@ static AAssetManager* asset_manager;
 static ztr_platform_api_t g_platform;
 static ztr_hid_t hid;
 
-PLATFORM_OPEN_RESOURCE_FILE(openResourceFile) {
-
+PLATFORM_OPEN_RESOURCE_FILE(openResourceFile)
+{
     assert (fileName != NULL);
-
     ztr_file_t result = {};
 
     AAsset *asset = AAssetManager_open (asset_manager, fileName, AASSET_MODE_STREAMING);
     assert (asset != NULL);
-
     if (asset != NULL)
     {
         result.data = (void *) AAsset_getBuffer (asset);

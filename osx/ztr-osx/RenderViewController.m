@@ -6,7 +6,7 @@
 #include <sys/mman.h>
 
 #import "RenderViewController.h"
-#import "platform_abstraction_layer.h"
+#import "ztr_platform_abstraction_layer.h"
 
 @implementation RenderViewController
 

@@ -3,7 +3,7 @@
 //  ZOZO Technologies Cross Platform Renderer Example
 //
 
-#import "platform_abstraction_layer.h"
+#import "ztr_platform_abstraction_layer.h"
 
 #import "RenderView.h"
 

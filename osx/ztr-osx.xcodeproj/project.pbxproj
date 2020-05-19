@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		BC016AE724724C9100B1232A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BC016AE624724C9100B1232A /* main.m */; };
 		BC14B13C22F0268E00335B2A /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC14B13B22F0268E00335B2A /* OpenGL.framework */; };
-		BC70AEAE2473D9DD0061BB66 /* platform_independent_layer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BC70AEAD2473D9DD0061BB66 /* platform_independent_layer.cpp */; };
 		BC80519122F3E5170070EB5E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BC80518922F3E5170070EB5E /* Assets.xcassets */; };
 		BC80519222F3E5170070EB5E /* RenderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC80518A22F3E5170070EB5E /* RenderViewController.m */; };
 		BC80519322F3E5170070EB5E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BC80518B22F3E5170070EB5E /* Main.storyboard */; };
@@ -18,6 +17,7 @@
 		BC8528AF23D90EF2002A7D4A /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC8528AE23D90EF2002A7D4A /* AppKit.framework */; };
 		BC8528B123D91109002A7D4A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC8528B023D91109002A7D4A /* Foundation.framework */; };
 		BC8E1B98247245EC0084EA2F /* res in Resources */ = {isa = PBXBuildFile; fileRef = BC8E1B97247245EC0084EA2F /* res */; };
+		BCADE41A2473EE1300921C90 /* ztr_platform_independent_layer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BCADE4192473EE1300921C90 /* ztr_platform_independent_layer.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,8 +26,6 @@
 		BC2DDF54246D4BAB00D7FCF1 /* libfoot-model-binary.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = "libfoot-model-binary.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC2DDF68246D4CFC00D7FCF1 /* libfoot-model-binary-osx.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = "libfoot-model-binary-osx.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC2DDF6A246D4D9E00D7FCF1 /* libfoot-model-binary-osx.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = "libfoot-model-binary-osx.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		BC70AEAC2473D9DD0061BB66 /* platform_abstraction_layer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = platform_abstraction_layer.h; sourceTree = "<group>"; };
-		BC70AEAD2473D9DD0061BB66 /* platform_independent_layer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = platform_independent_layer.cpp; sourceTree = "<group>"; };
 		BC80518722F3E5170070EB5E /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		BC80518822F3E5170070EB5E /* footrenderer.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = footrenderer.entitlements; sourceTree = "<group>"; };
 		BC80518922F3E5170070EB5E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -54,6 +52,8 @@
 		BC8528BA23D911C3002A7D4A /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		BC8528BC23D911ED002A7D4A /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
 		BC8E1B97247245EC0084EA2F /* res */ = {isa = PBXFileReference; lastKnownFileType = folder; name = res; path = ../../res; sourceTree = "<group>"; };
+		BCADE4182473EE1300921C90 /* ztr_platform_abstraction_layer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ztr_platform_abstraction_layer.h; sourceTree = "<group>"; };
+		BCADE4192473EE1300921C90 /* ztr_platform_independent_layer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ztr_platform_independent_layer.cpp; sourceTree = "<group>"; };
 		BCC20AC122DD683F009F3FCC /* ztr-osx.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ztr-osx.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -121,8 +121,8 @@
 				BC8051A622F3E5980070EB5E /* stb_image.h */,
 				BC8051A322F3E5980070EB5E /* tinyobj_loader_c.h */,
 				BC8051A222F3E5980070EB5E /* HandmadeMath.h */,
-				BC70AEAC2473D9DD0061BB66 /* platform_abstraction_layer.h */,
-				BC70AEAD2473D9DD0061BB66 /* platform_independent_layer.cpp */,
+				BCADE4182473EE1300921C90 /* ztr_platform_abstraction_layer.h */,
+				BCADE4192473EE1300921C90 /* ztr_platform_independent_layer.cpp */,
 			);
 			name = common;
 			path = ../../common;
@@ -215,8 +215,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BCADE41A2473EE1300921C90 /* ztr_platform_independent_layer.cpp in Sources */,
 				BC80519222F3E5170070EB5E /* RenderViewController.m in Sources */,
-				BC70AEAE2473D9DD0061BB66 /* platform_independent_layer.cpp in Sources */,
 				BC016AE724724C9100B1232A /* main.m in Sources */,
 				BC80519522F3E5170070EB5E /* AppDelegate.m in Sources */,
 			);
@@ -360,6 +360,7 @@
 					"DEBUG=1",
 					GLES_SILENCE_DEPRECATION,
 					GL_SILENCE_DEPRECATION,
+					SUPPORT_RETINA_RESOLUTION,
 				);
 				GCC_WARN_ABOUT_DEPRECATED_FUNCTIONS = NO;
 				HEADER_SEARCH_PATHS = (
@@ -389,6 +390,7 @@
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					GLES_SILENCE_DEPRECATION,
 					GL_SILENCE_DEPRECATION,
+					SUPPORT_RETINA_RESOLUTION,
 				);
 				GCC_WARN_ABOUT_DEPRECATED_FUNCTIONS = NO;
 				HEADER_SEARCH_PATHS = (

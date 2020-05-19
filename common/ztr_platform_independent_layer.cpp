@@ -1,11 +1,11 @@
 //
-//  zt_renderer.cpp
+//  ztr_platform_independent_layer.cpp
 //  ZOZO Technologies Cross Platform Renderer Example
 //
 
 // MARK: Includes
 
-#import "platform_abstraction_layer.h"
+#import "ztr_platform_abstraction_layer.h"
 
 // MARK: Standard library includes
 

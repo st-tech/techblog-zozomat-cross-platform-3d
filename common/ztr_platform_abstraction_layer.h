@@ -1,5 +1,5 @@
 //
-//  zt_renderer.h
+//  ztr_platform_abstraction_layer.h
 //  ZOZO Technologies Cross Platform Renderer Example
 //
 

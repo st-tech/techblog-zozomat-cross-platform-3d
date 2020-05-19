@@ -1,11 +1,11 @@
 //
-//  ZTRGLView.h
+//  RenderView.h
 //  ZOZO Technologies Cross Platform Renderer Example
 //
 
 #import <UIKit/UIKit.h>
 
-@interface ZTRGLView : UIView
+@interface RenderView : UIView
 
 @property (readonly, nonatomic, getter=isAnimating) BOOL animating;
 @property (nonatomic) NSInteger animationFrameInterval;

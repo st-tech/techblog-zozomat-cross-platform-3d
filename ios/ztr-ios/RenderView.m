@@ -1,10 +1,11 @@
 //
-//  ZTRGLView.m
+//  RenderView.m
 //  ZOZO Technologies Cross Platform Renderer Example
 //
 
-#import "ZTRGLView.h"
-#import "foot_renderer.h"
+#import "platform_abstraction_layer.h"
+
+#import "RenderView.h"
 
 #import <QuartzCore/QuartzCore.h>
 #import <OpenGLES/EAGL.h>
@@ -14,7 +15,7 @@
 
 #include <sys/mman.h>
 
-@interface ZTRGLView ()
+@interface RenderView ()
 {
     EAGLContext* _context;
     NSInteger _animationFrameInterval;
@@ -26,7 +27,7 @@
 }
 @end
 
-@implementation ZTRGLView
+@implementation RenderView
 
 static ztr_hid_t g_hid;
 static ztr_platform_api_t g_platform;

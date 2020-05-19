@@ -9,11 +9,11 @@
 /* Begin PBXBuildFile section */
 		BC016AE724724C9100B1232A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BC016AE624724C9100B1232A /* main.m */; };
 		BC14B13C22F0268E00335B2A /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC14B13B22F0268E00335B2A /* OpenGL.framework */; };
+		BC70AEAE2473D9DD0061BB66 /* platform_independent_layer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BC70AEAD2473D9DD0061BB66 /* platform_independent_layer.cpp */; };
 		BC80519122F3E5170070EB5E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BC80518922F3E5170070EB5E /* Assets.xcassets */; };
-		BC80519222F3E5170070EB5E /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC80518A22F3E5170070EB5E /* ViewController.m */; };
+		BC80519222F3E5170070EB5E /* RenderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC80518A22F3E5170070EB5E /* RenderViewController.m */; };
 		BC80519322F3E5170070EB5E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BC80518B22F3E5170070EB5E /* Main.storyboard */; };
 		BC80519522F3E5170070EB5E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BC80518E22F3E5170070EB5E /* AppDelegate.m */; };
-		BC8051A822F3E5980070EB5E /* foot_renderer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BC8051A522F3E5980070EB5E /* foot_renderer.cpp */; };
 		BC8528AB23D90CD2002A7D4A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC8528AA23D90CD2002A7D4A /* CoreGraphics.framework */; };
 		BC8528AF23D90EF2002A7D4A /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC8528AE23D90EF2002A7D4A /* AppKit.framework */; };
 		BC8528B123D91109002A7D4A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC8528B023D91109002A7D4A /* Foundation.framework */; };
@@ -26,19 +26,19 @@
 		BC2DDF54246D4BAB00D7FCF1 /* libfoot-model-binary.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = "libfoot-model-binary.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC2DDF68246D4CFC00D7FCF1 /* libfoot-model-binary-osx.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = "libfoot-model-binary-osx.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC2DDF6A246D4D9E00D7FCF1 /* libfoot-model-binary-osx.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = "libfoot-model-binary-osx.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		BC70AEAC2473D9DD0061BB66 /* platform_abstraction_layer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = platform_abstraction_layer.h; sourceTree = "<group>"; };
+		BC70AEAD2473D9DD0061BB66 /* platform_independent_layer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = platform_independent_layer.cpp; sourceTree = "<group>"; };
 		BC80518722F3E5170070EB5E /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		BC80518822F3E5170070EB5E /* footrenderer.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = footrenderer.entitlements; sourceTree = "<group>"; };
 		BC80518922F3E5170070EB5E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		BC80518A22F3E5170070EB5E /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		BC80518A22F3E5170070EB5E /* RenderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RenderViewController.m; sourceTree = "<group>"; };
 		BC80518C22F3E5170070EB5E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		BC80518E22F3E5170070EB5E /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		BC80518F22F3E5170070EB5E /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		BC80519022F3E5170070EB5E /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		BC80519022F3E5170070EB5E /* RenderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RenderViewController.h; sourceTree = "<group>"; };
 		BC80519F22F3E5980070EB5E /* stb_c_lexer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = stb_c_lexer.h; sourceTree = "<group>"; };
 		BC8051A222F3E5980070EB5E /* HandmadeMath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HandmadeMath.h; sourceTree = "<group>"; };
 		BC8051A322F3E5980070EB5E /* tinyobj_loader_c.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tinyobj_loader_c.h; sourceTree = "<group>"; };
-		BC8051A422F3E5980070EB5E /* foot_renderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = foot_renderer.h; sourceTree = "<group>"; };
-		BC8051A522F3E5980070EB5E /* foot_renderer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = foot_renderer.cpp; sourceTree = "<group>"; };
 		BC8051A622F3E5980070EB5E /* stb_image.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = stb_image.h; sourceTree = "<group>"; };
 		BC85289423D65B93002A7D4A /* libfoot-model-binary.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = "libfoot-model-binary.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC8528A623D65C2F002A7D4A /* libfoot-model-binary copy.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = "libfoot-model-binary copy.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -104,8 +104,8 @@
 				BC016AE624724C9100B1232A /* main.m */,
 				BC80518722F3E5170070EB5E /* AppDelegate.h */,
 				BC80518E22F3E5170070EB5E /* AppDelegate.m */,
-				BC80519022F3E5170070EB5E /* ViewController.h */,
-				BC80518A22F3E5170070EB5E /* ViewController.m */,
+				BC80519022F3E5170070EB5E /* RenderViewController.h */,
+				BC80518A22F3E5170070EB5E /* RenderViewController.m */,
 				BC80518B22F3E5170070EB5E /* Main.storyboard */,
 				BC80518922F3E5170070EB5E /* Assets.xcassets */,
 				BC80518822F3E5170070EB5E /* footrenderer.entitlements */,
@@ -121,8 +121,8 @@
 				BC8051A622F3E5980070EB5E /* stb_image.h */,
 				BC8051A322F3E5980070EB5E /* tinyobj_loader_c.h */,
 				BC8051A222F3E5980070EB5E /* HandmadeMath.h */,
-				BC8051A422F3E5980070EB5E /* foot_renderer.h */,
-				BC8051A522F3E5980070EB5E /* foot_renderer.cpp */,
+				BC70AEAC2473D9DD0061BB66 /* platform_abstraction_layer.h */,
+				BC70AEAD2473D9DD0061BB66 /* platform_independent_layer.cpp */,
 			);
 			name = common;
 			path = ../../common;
@@ -215,8 +215,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BC8051A822F3E5980070EB5E /* foot_renderer.cpp in Sources */,
-				BC80519222F3E5170070EB5E /* ViewController.m in Sources */,
+				BC80519222F3E5170070EB5E /* RenderViewController.m in Sources */,
+				BC70AEAE2473D9DD0061BB66 /* platform_independent_layer.cpp in Sources */,
 				BC016AE724724C9100B1232A /* main.m in Sources */,
 				BC80519522F3E5170070EB5E /* AppDelegate.m in Sources */,
 			);

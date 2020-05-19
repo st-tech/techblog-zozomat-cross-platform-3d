@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  RenderViewController.h
 //  ZOZO Technologies Cross Platform Renderer Example
 //
 
@@ -8,7 +8,7 @@
 #import <AppKit/AppKit.h>
 #import <Foundation/Foundation.h>
 
-@interface ViewController : NSOpenGLView {
+@interface RenderViewController : NSOpenGLView {
 	CVDisplayLinkRef displayLink;
 }
 

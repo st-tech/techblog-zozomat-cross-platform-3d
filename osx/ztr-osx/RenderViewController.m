@@ -1,14 +1,14 @@
 //
-//  ViewController.m
+//  RenderViewController.m
 //  ZOZO Technologies Cross Platform Renderer Example
 //
 
 #include <sys/mman.h>
 
-#import "ViewController.h"
-#import "foot_renderer.h"
+#import "RenderViewController.h"
+#import "platform_abstraction_layer.h"
 
-@implementation ViewController
+@implementation RenderViewController
 
 static ztr_platform_api_t g_platform;
 static ztr_hid_t g_hid;
@@ -20,7 +20,7 @@ static CVReturn MyDisplayLinkCallback(CVDisplayLinkRef displayLink,
 									  CVOptionFlags* flagsOut,
 									  void* displayLinkContext)
 {
-    ViewController *glView = (__bridge ViewController*)displayLinkContext;
+    RenderViewController *glView = (__bridge RenderViewController*)displayLinkContext;
 
     @autoreleasepool {
         [glView drawView];

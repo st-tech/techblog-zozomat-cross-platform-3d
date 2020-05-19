@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BC70AEB12473DA340061BB66 /* platform_independent_layer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BC70AEB02473DA330061BB66 /* platform_independent_layer.cpp */; };
 		BCACF51524725ADF00B76D3D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BCACF51424725ADF00B76D3D /* AppDelegate.m */; };
 		BCACF51824725ADF00B76D3D /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BCACF51724725ADF00B76D3D /* SceneDelegate.m */; };
 		BCACF51E24725ADF00B76D3D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BCACF51C24725ADF00B76D3D /* Main.storyboard */; };
@@ -14,12 +15,13 @@
 		BCACF52324725AE000B76D3D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BCACF52124725AE000B76D3D /* LaunchScreen.storyboard */; };
 		BCACF52624725AE000B76D3D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BCACF52524725AE000B76D3D /* main.m */; };
 		BCACF53824725EEE00B76D3D /* res in Resources */ = {isa = PBXBuildFile; fileRef = BCACF53724725EEE00B76D3D /* res */; };
-		BCACF54424725F2C00B76D3D /* foot_renderer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BCACF54024725F2C00B76D3D /* foot_renderer.cpp */; };
-		BCACF5492472636300B76D3D /* ZTRGLView.m in Sources */ = {isa = PBXBuildFile; fileRef = BCACF5472472636300B76D3D /* ZTRGLView.m */; };
+		BCACF5492472636300B76D3D /* RenderView.m in Sources */ = {isa = PBXBuildFile; fileRef = BCACF5472472636300B76D3D /* RenderView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		BC14B13B22F0268E00335B2A /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
+		BC70AEAF2473DA330061BB66 /* platform_abstraction_layer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = platform_abstraction_layer.h; sourceTree = "<group>"; };
+		BC70AEB02473DA330061BB66 /* platform_independent_layer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = platform_independent_layer.cpp; sourceTree = "<group>"; };
 		BC76C22723A0D29F00F2DB31 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS13.1.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 		BCACF51124725ADF00B76D3D /* ZOZO Tech Renderer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ZOZO Tech Renderer.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BCACF51324725ADF00B76D3D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -35,11 +37,9 @@
 		BCACF53C24725F2C00B76D3D /* stb_c_lexer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = stb_c_lexer.h; sourceTree = "<group>"; };
 		BCACF53D24725F2C00B76D3D /* HandmadeMath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HandmadeMath.h; sourceTree = "<group>"; };
 		BCACF53E24725F2C00B76D3D /* tinyobj_loader_c.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tinyobj_loader_c.h; sourceTree = "<group>"; };
-		BCACF53F24725F2C00B76D3D /* foot_renderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = foot_renderer.h; sourceTree = "<group>"; };
-		BCACF54024725F2C00B76D3D /* foot_renderer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = foot_renderer.cpp; sourceTree = "<group>"; };
 		BCACF54224725F2C00B76D3D /* stb_image.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = stb_image.h; sourceTree = "<group>"; };
-		BCACF5472472636300B76D3D /* ZTRGLView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZTRGLView.m; sourceTree = "<group>"; };
-		BCACF5482472636300B76D3D /* ZTRGLView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZTRGLView.h; sourceTree = "<group>"; };
+		BCACF5472472636300B76D3D /* RenderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RenderView.m; sourceTree = "<group>"; };
+		BCACF5482472636300B76D3D /* RenderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RenderView.h; sourceTree = "<group>"; };
 		BCD1254722F3E920004F311B /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.2.sdk/System/Library/Frameworks/OpenGLES.framework; sourceTree = DEVELOPER_DIR; };
 		BCD1D4D823DD27760079D637 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.4.sdk/System/Library/Frameworks/CoreGraphics.framework; sourceTree = DEVELOPER_DIR; };
 		BCFAC0E72397696300E03A9A /* libfoot-model-binary.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = "libfoot-model-binary.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -74,8 +74,8 @@
 				BCACF53B24725F2C00B76D3D /* common */,
 				BCACF53724725EEE00B76D3D /* res */,
 				BCACF51324725ADF00B76D3D /* AppDelegate.h */,
-				BCACF5482472636300B76D3D /* ZTRGLView.h */,
-				BCACF5472472636300B76D3D /* ZTRGLView.m */,
+				BCACF5482472636300B76D3D /* RenderView.h */,
+				BCACF5472472636300B76D3D /* RenderView.m */,
 				BCACF51424725ADF00B76D3D /* AppDelegate.m */,
 				BCACF51624725ADF00B76D3D /* SceneDelegate.h */,
 				BCACF51724725ADF00B76D3D /* SceneDelegate.m */,
@@ -94,9 +94,9 @@
 				BCACF53C24725F2C00B76D3D /* stb_c_lexer.h */,
 				BCACF53D24725F2C00B76D3D /* HandmadeMath.h */,
 				BCACF53E24725F2C00B76D3D /* tinyobj_loader_c.h */,
-				BCACF53F24725F2C00B76D3D /* foot_renderer.h */,
-				BCACF54024725F2C00B76D3D /* foot_renderer.cpp */,
 				BCACF54224725F2C00B76D3D /* stb_image.h */,
+				BC70AEAF2473DA330061BB66 /* platform_abstraction_layer.h */,
+				BC70AEB02473DA330061BB66 /* platform_independent_layer.cpp */,
 			);
 			name = common;
 			path = ../../common;
@@ -190,9 +190,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BCACF5492472636300B76D3D /* ZTRGLView.m in Sources */,
-				BCACF54424725F2C00B76D3D /* foot_renderer.cpp in Sources */,
+				BCACF5492472636300B76D3D /* RenderView.m in Sources */,
 				BCACF51524725ADF00B76D3D /* AppDelegate.m in Sources */,
+				BC70AEB12473DA340061BB66 /* platform_independent_layer.cpp in Sources */,
 				BCACF52624725AE000B76D3D /* main.m in Sources */,
 				BCACF51824725ADF00B76D3D /* SceneDelegate.m in Sources */,
 			);

@@ -303,11 +303,11 @@ LoadShaders (shading_version_t shadingVersion, char *vertexFileName, char *fragm
     GLuint vertexShaderID = glCreateShader (GL_VERTEX_SHADER);
     GLuint fragmentShaderID = glCreateShader (GL_FRAGMENT_SHADER);
 
-    ztr_file_t vertexShaderFile = g_platform->openResourceFile (g_platform->getResourcePath (vertexFileName));
+    ztr_file_t vertexShaderFile = g_platform->openResourceFile (vertexFileName);
     if (vertexShaderFile.data == NULL)
         assert (!"Could not load vertex shader.\n");
 
-    ztr_file_t fragmentShaderFile = g_platform->openResourceFile (g_platform->getResourcePath (fragmentFileName));
+    ztr_file_t fragmentShaderFile = g_platform->openResourceFile (fragmentFileName);
     if (fragmentShaderFile.data == NULL)
         assert (!"Could not load fragment shader.\n");
 
@@ -418,7 +418,7 @@ LoadShaders (shading_version_t shadingVersion, char *vertexFileName, char *fragm
 }
 
 static mesh_t *
-loadObj (char *fileName)
+loadObj (const char *fileName)
 {
     ztr_file_t file = g_platform->openResourceFile (fileName);
 
@@ -620,7 +620,7 @@ ZTR_INIT (ztrInit)
 
     // MARK: Load Stanford Bunny
 
-    mesh_t *bunnyMesh = loadObj (g_platform->getResourcePath ((char *) "bunny_vn.obj"));
+    mesh_t *bunnyMesh = loadObj ("bunny_vn.obj");
     float S = 1.f;
     bunnyMesh->S = HMM_Scale (HMM_Vec3 (S, S, S));
     bunnyMesh->R = HMM_Rotate (0.f, HMM_Vec3 (1,0,0));

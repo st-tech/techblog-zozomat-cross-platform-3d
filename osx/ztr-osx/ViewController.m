@@ -74,61 +74,23 @@ static CVReturn MyDisplayLinkCallback(CVDisplayLinkRef displayLink,
     [[self window] setAcceptsMouseMovedEvents:YES];
 }
 
-// TODO: Move this to a common function for both OSX and iOS (Cocoa common).
-PLATFORM_GET_RESOURCE_PATH(getResourcePath)
-{
-    char *result = 0;
-
-    NSArray *components = [[NSString stringWithUTF8String:fileName] componentsSeparatedByString:@"."];
-    if(components.count == 2)
-    {
-        NSString *fileNameBase = [NSString stringWithFormat:@"res/%@", components[0]];
-        NSURL *filePathUrl = [[NSBundle mainBundle] URLForResource:fileNameBase withExtension:components[1]];
-        const char *filePathCString = [filePathUrl.path cStringUsingEncoding: NSASCIIStringEncoding];
-
-        assert (filePathCString != NULL);
-
-        result = (char *) filePathCString;
-    }
-
-    return (result);
-}
-
-PLATFORM_OPEN_RESOURCE_FILE(openResourceFile)
+PLATFORM_OPEN_RESOURCE_FILE (openResourceFile)
 {
     ztr_file_t result = {};
 
-    // TODO: Use NS functions here.
-    result.handle = open(filePath, O_RDONLY,
-            S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH);
-    if(result.handle >= 0)
+    NSArray *components = [[NSString stringWithUTF8String:fileName] componentsSeparatedByString:@"."];
+    if (components.count == 2)
     {
-        off_t SeekOffset = lseek(result.handle, 0, SEEK_END);
-        if(SeekOffset > 0)
-        {
-            lseek(result.handle, 0, SEEK_SET);
-            result.dataSize = (unsigned int) SeekOffset;
-            // TODO: What is the FreeBSD version of mmap???
-            result.data = mmap(
-                    result.data,
-                    result.dataSize,
-                    PROT_READ|PROT_WRITE,
-                    MAP_PRIVATE|MAP_ANON,
-                    -1, 0);
+        NSString *fileNameBase = [NSString stringWithFormat:@"res/%@", components[0]];
+        NSURL *fileUrl = [[NSBundle mainBundle] URLForResource:fileNameBase withExtension:components[1]];
 
-            ssize_t BytesRead = read(result.handle, result.data, result.dataSize);
-            if(BytesRead == -1)
-            {
-                // TODO: Error handling/logging.
-                // TODO: Check the errno here.
-                if(result.data)
-                {
-                    // TODO: Proper Error Handling.
-                    int munmapResult = munmap (result.data, result.dataSize);
-                    assert (munmapResult == 0);
-                    memset((void *)&result, 0, sizeof(result));
-                }
-            }
+        NSFileManager *manager = [NSFileManager defaultManager];
+        NSData *data = [manager contentsAtPath:fileUrl.path];
+
+        if (data)
+        {
+            result.data = (void *) data.bytes;
+            result.dataSize = (unsigned int) data.length;
         }
     }
 
@@ -158,8 +120,6 @@ PLATFORM_OPEN_RESOURCE_FILE(openResourceFile)
 											   object:[self window]];
 
     g_platform.openResourceFile = openResourceFile;
-    g_platform.getResourcePath = getResourcePath;
-
     ztrInit(&g_platform);
 }
 

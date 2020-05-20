@@ -20,10 +20,5 @@ public class RenderLib {
 
         @JvmStatic
         external fun free()
-
-        @JvmStatic
-        fun blah() {
-            Log.d("TAG", "KAP blah was called")
-        }
     }
 }

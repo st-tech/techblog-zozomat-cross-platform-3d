@@ -35,11 +35,8 @@ static CVReturn MyDisplayLinkCallback(CVDisplayLinkRef displayLink,
 		NSOpenGLPFADoubleBuffer,
 		NSOpenGLPFADepthSize, 24,
 
-		// Must specify the 3.2 Core Profile to use OpenGL 3.2
-//#if ESSENTIAL_GL_PRACTICES_SUPPORT_GL3
 		NSOpenGLPFAOpenGLProfile,
 		NSOpenGLProfileVersion3_2Core,
-//#endif
 		0
 	};
 

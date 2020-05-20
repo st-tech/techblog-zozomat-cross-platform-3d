@@ -12,7 +12,7 @@ class RenderView(context: Context, onSurfaceCreatedClosure: ((view: RenderView) 
     init {
 
         // Pick an EGLConfig with RGB8 color, 16-bit depth, no stencil,
-        // supporting OpenGL ES 2.0 or later backwards-compatible versions.
+        // supporting OpenGL ES 2.0 or later backwards-compatible versions
         setEGLConfigChooser(8, 8, 8, 0, 16, 0)
         setEGLContextClientVersion(3)
 
@@ -24,7 +24,7 @@ class RenderView(context: Context, onSurfaceCreatedClosure: ((view: RenderView) 
         setRenderer(renderer)
     }
 
-    // TODO: Pull these directly from the NDK.
+    // Pull these directly from the NDK
     private var _mouseDown = 0
     private var _mouseDownUp = 0
     private var _mouseX = 0

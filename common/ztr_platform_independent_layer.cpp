@@ -53,7 +53,6 @@
 
 #define SCENE_ANIMATION_STEP 0.007f
 
-// TODO: Make this platform independent.
 #define MOUSE_SENSITIVITY 0.3f
 
 // MARK: Structs
@@ -99,7 +98,7 @@ struct mesh_t
     vertex_t *textures;
     unsigned int texturesCount;
 
-    // NOTE: Rendering buffers.
+    // Rendering buffers
     GLuint VAO, VBO, EBO;
 
     hmm_mat4 S, R, T;
@@ -124,7 +123,7 @@ struct camera_t
 
 };
 
-// This represents _internal_ input.
+// Represents _internal_ input
 struct mouse_t
 {
     hmm_vec2 last;
@@ -135,7 +134,7 @@ struct scene_t
 {
     camera_t camera;
 
-    // TODO: State enum
+    // Scene state
     int ready;
     int animatingIntroFade;
     int animatingResetCamera;
@@ -147,15 +146,13 @@ struct scene_t
     // Shaders
     shader_t shaders[MAX_SHADERS];
     unsigned int shaderCount = 0;
+    shader_t *objectShader;
 
     // Meshes
     mesh_t meshes[MAX_MESHES];
     int meshCount = 0;
 
-    shader_t *objectShader;
-
-
-    // TODO: Separate "from platform" struct?
+    // Platform values
     mouse_t mouse;
     hmm_vec2 screenDims;
 
@@ -252,8 +249,7 @@ Clamp (float x, float min, float max)
 }
 
 
-// TODO: Could use fixed co-efficients for speed here.
-// NOTE: t should be 0 to 1, returns curve value from B to C.
+// t should be 0 to 1, returns curve value from B to C
 inline float
 cubicHermite (float A, float B, float C, float D, float t)
 {
@@ -267,7 +263,7 @@ cubicHermite (float A, float B, float C, float D, float t)
     return (x);
 }
 
-// NOTE: Bezier allows for steeper curves than Hermite...
+// Bezier allows for steeper curves than Hermite
 inline float
 cubicBezier (float u)
 {
@@ -276,6 +272,7 @@ cubicBezier (float u)
     hmm_vec3 p2 = HMM_Vec3 (0.f, 1.f, 0.f);
     hmm_vec3 p3 = HMM_Vec3 (1.f, 1.f, 0.f);
 
+    // Ignoring x, we only need a single value
     // float xu = pow(1 - u, 3)*p0.X + 3*u*pow(1 - u, 2)*p1.X + 3*pow(u, 2)*(1 - u)*p2.X + pow(u, 3)*p3.X;
     float yu = pow(1 - u, 3)*p0.Y + 3*u*pow(1 - u, 2)*p1.Y + 3*pow(u, 2)*(1 - u)*p2.Y + pow(u, 3)*p3.Y;
 
@@ -285,8 +282,6 @@ cubicBezier (float u)
 inline void
 UpdateCamPos (camera_t *cam)
 {
-    // TODO: Draw this vector for debugging.
-    // TODO: Sort out cam->pitch flipping issue...
     hmm_vec3 dir;
 
     dir.X = HMM_CosF (HMM_ToRadians (cam->yaw)) * HMM_CosF(HMM_ToRadians (cam->pitch));
@@ -299,7 +294,7 @@ UpdateCamPos (camera_t *cam)
 GLuint
 LoadShaders (shading_version_t shadingVersion, char *vertexFileName, char *fragmentFileName)
 {
-    // NOTE: Create vertex and fragment shaders.
+    // Create vertex and fragment shaders
     GLuint vertexShaderID = glCreateShader (GL_VERTEX_SHADER);
     GLuint fragmentShaderID = glCreateShader (GL_FRAGMENT_SHADER);
 
@@ -359,12 +354,12 @@ LoadShaders (shading_version_t shadingVersion, char *vertexFileName, char *fragm
     GLint Result = GL_FALSE;
     int infoLogLength;
 
-    // Compile Vertex Shader.
+    // Compile Vertex Shader
     printf ("Compiling shader : %s\n", vertexFileName);
     glShaderSource (vertexShaderID, 1, (const GLchar **) &vertexShaderSource, NULL);
     glCompileShader (vertexShaderID);
 
-    // Check Vertex Shader.
+    // Check Vertex Shader
     glGetShaderiv (vertexShaderID, GL_COMPILE_STATUS, &Result);
     glGetShaderiv (vertexShaderID, GL_INFO_LOG_LENGTH, &infoLogLength);
 
@@ -374,12 +369,12 @@ LoadShaders (shading_version_t shadingVersion, char *vertexFileName, char *fragm
         printf ("%s\n", &vertexShaderErrorMessage[0]);
     }
 
-    // Compile Fragment Shader.
+    // Compile Fragment Shader
     printf ("Compiling shader : %s\n", fragmentFileName);
     glShaderSource (fragmentShaderID, 1, (const GLchar **) &fragmentShaderSource, NULL);
     glCompileShader (fragmentShaderID);
 
-    // Check Fragment Shader.
+    // Check Fragment Shader
     glGetShaderiv (fragmentShaderID, GL_COMPILE_STATUS, &Result);
     glGetShaderiv (fragmentShaderID, GL_INFO_LOG_LENGTH, &infoLogLength);
     if (infoLogLength > 0)
@@ -389,7 +384,7 @@ LoadShaders (shading_version_t shadingVersion, char *vertexFileName, char *fragm
         printf ("%s\n", &fragmentShaderErrorMessage[0]);
     }
 
-    // Link the program.
+    // Link the program
     printf ("Linking program\n");
     GLuint programID = glCreateProgram ();
     glAttachShader (programID, vertexShaderID);
@@ -453,9 +448,7 @@ loadObj (const char *fileName)
         mesh->verticesCount = 0;
         mesh->vertices = (vertex_t *) malloc (sizeof (vertex_t)*attrib.num_faces);
 
-        // For now, we iterate every face and copy to a new vertex.
-        // To remove dupes, maybe we can find a lib that does this for us.
-        // Could prob do this with a hash map quite easily.
+        // For now, we iterate every face and copy to a new vertex
         for (int i=0 ; i<attrib.num_faces ;  i++)
         {
             tinyobj_vertex_index_t *sourceFace = attrib.faces + i;
@@ -471,14 +464,6 @@ loadObj (const char *fileName)
                 float *normStart = attrib.normals + sourceFace->vn_idx*3;
                 destVertex->normal = HMM_Vec3 (normStart[0], normStart[1], normStart[2]);
             }
-
-#if 0
-            if (sourceFace->vt_idx != TINYOBJ_INVALID_INDEX)
-            {
-                float *uvStart = attrib.texcoords + sourceFace->vt_idx*2;
-                destVertex->uv = HMM_Vec2 (uvStart[0], uvStart[1]);
-            }
-#endif
 
             mesh->indices[i] = (GLushort)i;
             mesh->verticesCount++;
@@ -499,19 +484,15 @@ loadObj (const char *fileName)
         glBufferData (GL_ELEMENT_ARRAY_BUFFER, mesh->indicesCount*sizeof (GLushort), mesh->indices, GL_STATIC_DRAW);
         //glBindBuffer (GL_ELEMENT_ARRAY_BUFFER, 0);
 
-        // Vertex Positions.
+        // Vertex Positions
         glEnableVertexAttribArray (0);
         glVertexAttribPointer (0, 3, GL_FLOAT, GL_FALSE, sizeof (vertex_t), (GLvoid*)offsetof (vertex_t, position));
 
-        // Vertex Normals.
+        // Vertex Normals
         glEnableVertexAttribArray (1);
         glVertexAttribPointer (1, 3, GL_FLOAT, GL_FALSE, sizeof (vertex_t), (GLvoid*)offsetof (vertex_t, normal));
 
-        // Vertex Texture Coords.
-        // glEnableVertexAttribArray (2);
-        // glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, sizeof (vertex_t), (GLvoid*)offsetof (vertex_t, uv));
-
-        // Unbind the VAO, not the EBO, otherwise our VAO will lose it's EBO.
+        // Unbind the VAO, not the EBO, otherwise our VAO will lose it's EBO
         glBindVertexArray (0);
 
         result = mesh;
@@ -576,18 +557,14 @@ ZTR_INIT (ztrInit)
     GLint m_viewport[4];
     glGetIntegerv (GL_VIEWPORT, m_viewport);
 
-    // Uncomment for wireframe debugging.
-    // glPolygonMode (GL_FRONT_AND_BACK, GL_LINE);
     glEnable (GL_CULL_FACE);
-
-    // Enable transparency.
     glEnable (GL_BLEND);
 
-    // Expects pre multiplied alpha values.
+    // Expects pre multiplied alpha values
     glBlendEquationSeparate (GL_FUNC_ADD,GL_FUNC_ADD);
     glBlendFuncSeparate (GL_ONE, GL_ONE_MINUS_SRC_ALPHA, GL_ONE, GL_ONE_MINUS_SRC_ALPHA);
 
-    // TODO: Does nothing by itself. Need to use FBOs for MSAA.
+    // Does nothing by itself, Need to use FBOs for MSAA
     // glEnable (GL_MULTISAMPLE);
 
     assert (g_scene.shaderCount < MAX_SHADERS);
@@ -597,13 +574,13 @@ ZTR_INIT (ztrInit)
 
     glUseProgram (g_scene.objectShader->program);
 
-    // Set the shader colors only once.
-    // Don’t forget to ’use’ the corresponding shader program first (to set the uniform)
+    // Set the shader colors only once
+    // Must call glUseProgram for the corresponding shader program first, to set the uniform
     GLint objectColorLoc = glGetUniformLocation (g_scene.objectShader->program, "objectColor");
     glUniform3f (objectColorLoc, 255.f/255.99f, 174.f/255.99f, 82.f/255.99f);
     GL_CHECK_ERROR ();
 
-    // Also set light’s color (white).
+    // Also set light’s color (white)
     GLint lightColorLoc = glGetUniformLocation (g_scene.objectShader->program, "lightColor");
     glUniform3f (lightColorLoc, 1.0f, 1.0f, 1.0f);
     GL_CHECK_ERROR ();
@@ -614,6 +591,7 @@ ZTR_INIT (ztrInit)
     GL_CHECK_ERROR ();
 
     // MARK: Init all structs
+
     InitScene (&g_scene);
     InitCam (&g_scene.camera);
     InitMouse (&g_scene.mouse);
@@ -636,7 +614,6 @@ ZTR_FREE (ztrFree)
 {
     if (g_scene.ready)
     {
-        // TODO: Allocate a memory pool and reset to zero.
         for (int i=0 ; i<g_scene.meshCount ; i++)
         {
             mesh_t *mesh = g_scene.meshes + i;
@@ -654,14 +631,13 @@ ZTR_FREE (ztrFree)
         }
 
         g_scene.meshCount = 0;
-        // g_scene.shaderCount = 0;
         g_scene.ready = 0;
     }
 }
 
 ZTR_RESIZE (ztrResize)
 {
-    // TODO: Sync these writes.
+    // Should sync these writes
     g_scene.screenDims.X = w;
     g_scene.screenDims.Y = h;
 
@@ -677,7 +653,7 @@ ZTR_DRAW (ztrDraw)
 
     glClear (GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-    // TODO: Make this atomic.
+    // Should make atomic
     if (g_scene.ready)
     {
         camera_t *cam = &g_scene.camera;
@@ -689,7 +665,7 @@ ZTR_DRAW (ztrDraw)
         float labelPosAnimCurve = 1.f;
         float fadeMeshOpacity = 0.f;
 
-        // NOTE: Check first to disable hid input while load animating.
+        // Check first to disable hid input while load animating
         if (g_scene.animatingIntroFade)
         {
             if (g_scene.animT < 1.f)
@@ -707,7 +683,7 @@ ZTR_DRAW (ztrDraw)
             }
             else
             {
-                // NOTE: To prevent mouse "jumping" if down while animating.
+                // To prevent mouse "jumping" if down while animatin
                 if (hid.mouseDown == 1)
                 {
                     mouse->last.X = hid.mouseX;
@@ -726,14 +702,14 @@ ZTR_DRAW (ztrDraw)
             mouse->last.Y = hid.mouseY;
 
             mouse->offset.X = 0;
-            mouse->offset.Y = 0; // reversed since y-coordinates range from bottom to top
+            mouse->offset.Y = 0;
 
             g_scene.animatingIntroFade = false;
 
             g_scene.animatingResetCamera = 1;
             g_scene.animT = 0.f;
 
-            // NOTE: To ensure we always rotate in the correct direction.
+            // Ensure we always rotate in the correct direction
             float yawZeroed = cam->yaw - (CAM_YAW_BASE + 180);
             float yawWhole = (((int) (yawZeroed/360.f))*360.f);
             float yawFraction = (yawZeroed - yawWhole);
@@ -783,7 +759,7 @@ ZTR_DRAW (ztrDraw)
                 g_scene.animatingResetCamera = false;
             }
 
-            // Reversed since y-coordinates range from bottom to top.
+            // Reversed since y-coordinates range from bottom to top
             mouse->offset.X = hid.mouseX - mouse->last.X;
             mouse->offset.Y = mouse->last.Y - hid.mouseY;
 
@@ -868,9 +844,7 @@ ZTR_DRAW (ztrDraw)
         // float deltaTime = (float) (g_scene.currentTime - g_scene.lastTime);
         g_scene.lastTime = g_scene.currentTime;
 
-        // glfwGetFramebufferSize(window, &g_scene.screenDims.X, &g_scene.screenDims.Y);
-
-        // Projection/view matrices.
+        // Projection/view matrices
         float ratio = (float) g_scene.screenDims.Y/(float) g_scene.screenDims.X;
         float orth = cam->orthScale;
         hmm_mat4 projection = HMM_Orthographic (-orth, orth, -ratio*orth, ratio*orth, CAM_NEAR, CAM_FAR);
@@ -881,16 +855,13 @@ ZTR_DRAW (ztrDraw)
 
         hmm_vec3 lightPos = HMM_Vec3 (1,1,2);
         GLint lightPosLoc = glGetUniformLocation (g_scene.objectShader->program, "lightPos");
-        //glUniform3f (lightPosLoc, cam->pos[0], cam->pos[1], cam->pos[2]);
-        glUniform3f (lightPosLoc, lightPos[0], lightPos[1], lightPos[2]);
+        glUniform3f (lightPosLoc, cam->pos[0], cam->pos[1], cam->pos[2]);
         GL_CHECK_ERROR ();
 
         for (int i=0 ; i<g_scene.shaderCount; i++)
         {
             shader_t *shader = g_scene.shaders + i;
 
-            // TODO: Should only have to do this once per shader.
-            // Or better still, use the same shader.
             glUseProgram(shader->program);
 
             GLuint viewMatrixLoc = glGetUniformLocation (shader->program, "view");
@@ -910,14 +881,12 @@ ZTR_DRAW (ztrDraw)
 
             glUseProgram (shader->program);
 
-            // NOTE: Don't have to do every frame, everything in our scene is static anyway.
+            // Doing this anyway, even though our scene is static
             mesh->model = mesh->T*mesh->R*mesh->S;
 
             GLuint rotateMatrixLoc = glGetUniformLocation (shader->program, "rotate");
             glUniformMatrix4fv (rotateMatrixLoc, 1, GL_FALSE, &mesh->R.Elements[0][0]);
 
-            // Might be better to just pass S R T and figure out model on shader.
-            // No, there is a better way to do this so that normals don't get affected by scale etc.
             GLuint modelMatrixLoc = glGetUniformLocation (shader->program, "model");
             glUniformMatrix4fv (modelMatrixLoc, 1, GL_FALSE, &mesh->model.Elements[0][0]);
 

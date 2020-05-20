@@ -144,7 +144,7 @@ PLATFORM_OPEN_RESOURCE_FILE (openResourceFile)
 {
     g_hid.doubleTap = 1;
 
-    // NOTE: Hack to ensure we disable normal input.
+    // Disable normal input
     g_hid.mouseTransition = 0;
     g_hid.mouseDown = 0;
 
@@ -153,14 +153,10 @@ PLATFORM_OPEN_RESOURCE_FILE (openResourceFile)
 
 - (void) pinchZoomAction:(UIPinchGestureRecognizer *)recognizer
 {
-    // NSLog(@"pinchZoomAction: %f", recognizer.scale);
-
     switch (recognizer.state)
     {
         case UIGestureRecognizerStateBegan:
             {
-                // NSLog(@"pinchZoomAction: UIGestureRecognizerStateBegan");
-
                 g_hid.pinchZoomActive = 1;
                 g_hid.pinchZoomTransition = 1;
                 g_hid.pinchZoomScale = recognizer.scale;
@@ -169,8 +165,6 @@ PLATFORM_OPEN_RESOURCE_FILE (openResourceFile)
 
         case UIGestureRecognizerStateChanged:
             {
-                // NSLog(@"pinchZoomAction: UIGestureRecognizerStateChanged");
-
                 g_hid.pinchZoomActive = 1;
                 g_hid.pinchZoomTransition = 0;
                 g_hid.pinchZoomScale = recognizer.scale;
@@ -179,8 +173,6 @@ PLATFORM_OPEN_RESOURCE_FILE (openResourceFile)
 
         case UIGestureRecognizerStateEnded:
             {
-                // NSLog(@"pinchZoomAction: UIGestureRecognizerStateEnded");
-
                 g_hid.pinchZoomActive = 0;
                 g_hid.pinchZoomTransition = 1;
                 g_hid.pinchZoomScale = recognizer.scale;
@@ -191,7 +183,7 @@ PLATFORM_OPEN_RESOURCE_FILE (openResourceFile)
             break;
     }
 
-    // NOTE: Hack to ensure we disable normal input.
+    // Disable normal input
     g_hid.mouseTransition = 0;
     g_hid.mouseDown = 0;
 
@@ -238,8 +230,6 @@ PLATFORM_OPEN_RESOURCE_FILE (openResourceFile)
 
 - (void) layoutSubviews
 {
-    // TODO: Invoke a resize function here.
-
     [self drawView:nil];
 }
 
@@ -319,7 +309,7 @@ UITouch *currentTouch = nil;
     g_hid.mouseTransition = 1;
     g_hid.mouseDown = 1;
 
-    // We only track the first touch.
+    // We only track the first touch
     for (UITouch *touch in event.allTouches) {
 
         if (currentTouch == nil) {

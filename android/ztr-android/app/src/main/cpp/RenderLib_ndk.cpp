@@ -45,7 +45,8 @@ PLATFORM_OPEN_RESOURCE_FILE(openResourceFile)
 }
 
 extern "C" JNIEXPORT void JNICALL
-Java_com_zozo_ztr_1android_RenderLib_init(JNIEnv* env, void *reserved, jobject assetManager) {
+Java_com_zozo_ztr_1android_RenderLib_init(JNIEnv* env, void *reserved, jobject assetManager)
+{
 
     env->GetJavaVM(&javaVm);
     asset_manager = AAssetManager_fromJava(env, assetManager);
@@ -55,8 +56,8 @@ Java_com_zozo_ztr_1android_RenderLib_init(JNIEnv* env, void *reserved, jobject a
 }
 
 extern "C" JNIEXPORT void JNICALL
-Java_com_zozo_ztr_1android_RenderLib_draw(JNIEnv* env, jobject obj, jint mouseDown, jint mouseDownUp, jint x, jint y) {
-
+Java_com_zozo_ztr_1android_RenderLib_draw(JNIEnv* env, jobject obj, jint mouseDown, jint mouseDownUp, jint x, jint y)
+{
     hid.mouseDown = static_cast<int> (mouseDown);
     hid.mouseTransition = static_cast<int> (mouseDownUp);
     hid.mouseX = static_cast<int> (x);
@@ -68,13 +69,13 @@ Java_com_zozo_ztr_1android_RenderLib_draw(JNIEnv* env, jobject obj, jint mouseDo
 }
 
 extern "C" JNIEXPORT void JNICALL
-Java_com_zozo_ztr_1android_RenderLib_resize(JNIEnv* env, jobject obj, jint width, jint height) {
-
+Java_com_zozo_ztr_1android_RenderLib_resize(JNIEnv* env, jobject obj, jint width, jint height)
+{
     ztrResize (&g_platform, width, height);
 }
 
 extern "C" JNIEXPORT void JNICALL
-Java_com_zozo_ztr_1android_RenderLib_free(JNIEnv* env, jobject obj) {
-
+Java_com_zozo_ztr_1android_RenderLib_free(JNIEnv* env, jobject obj)
+{
     ztrFree ();
 }

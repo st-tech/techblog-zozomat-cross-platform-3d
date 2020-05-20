@@ -31,11 +31,11 @@
         #import <OpenGL/gl3.h>
 
     #else
-        // Unsupported platform.
+        // Unsupported platform
 #endif
 
 #else
-    // Unsupported architecture.
+    // Unsupported architecture
 
 #endif
 

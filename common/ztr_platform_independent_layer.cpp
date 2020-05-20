@@ -486,11 +486,11 @@ loadObj (const char *fileName)
 
         // Vertex Positions
         glEnableVertexAttribArray (0);
-        glVertexAttribPointer (0, 3, GL_FLOAT, GL_FALSE, sizeof (vertex_t), (GLvoid*)offsetof (vertex_t, position));
+        glVertexAttribPointer (0, 3, GL_FLOAT, GL_FALSE, sizeof (vertex_t), (GLvoid *) offsetof (vertex_t, position));
 
         // Vertex Normals
         glEnableVertexAttribArray (1);
-        glVertexAttribPointer (1, 3, GL_FLOAT, GL_FALSE, sizeof (vertex_t), (GLvoid*)offsetof (vertex_t, normal));
+        glVertexAttribPointer (1, 3, GL_FLOAT, GL_FALSE, sizeof (vertex_t), (GLvoid *) offsetof (vertex_t, normal));
 
         // Unbind the VAO, not the EBO, otherwise our VAO will lose it's EBO
         glBindVertexArray (0);
@@ -590,14 +590,12 @@ ZTR_INIT (ztrInit)
     glUniform3f (lightPosLoc, lightPos.X, lightPos.Y, lightPos.Z);
     GL_CHECK_ERROR ();
 
-    // MARK: Init all structs
-
+    // Init all structs
     InitScene (&g_scene);
     InitCam (&g_scene.camera);
     InitMouse (&g_scene.mouse);
 
-    // MARK: Load Stanford Bunny
-
+    // Load Stanford Bunny
     mesh_t *bunnyMesh = loadObj ("bunny_vn.obj");
     float S = 1.f;
     bunnyMesh->S = HMM_Scale (HMM_Vec3 (S, S, S));
@@ -683,7 +681,7 @@ ZTR_DRAW (ztrDraw)
             }
             else
             {
-                // To prevent mouse "jumping" if down while animatin
+                // To prevent mouse "jumping" if down while animating
                 if (hid.mouseDown == 1)
                 {
                     mouse->last.X = hid.mouseX;

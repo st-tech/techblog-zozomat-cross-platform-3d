@@ -470,29 +470,39 @@ loadObj (const char *fileName)
             mesh->indicesCount++;
         }
 
+        // VAO、VBO、EBO、を初期化する。
         glGenVertexArrays (1, &mesh->VAO);
         glGenBuffers (1, &mesh->VBO);
         glGenBuffers (1, &mesh->EBO);
 
+
+        // VAOを紐づけるとVBOとEBOを設定できます。
         glBindVertexArray (mesh->VAO);
 
+
+        // VBOバファーメッシュのインデックスを割り当てます。
         glBindBuffer (GL_ARRAY_BUFFER, mesh->VBO);
         glBufferData (GL_ARRAY_BUFFER, mesh->verticesCount*sizeof (vertex_t), mesh->vertices, GL_STATIC_DRAW);
         //glBindBuffer (GL_ARRAY_BUFFER, 0);
 
+
+        // EBOバファーメッシュのインデックスを割り当てます。
         glBindBuffer (GL_ELEMENT_ARRAY_BUFFER, mesh->EBO);
         glBufferData (GL_ELEMENT_ARRAY_BUFFER, mesh->indicesCount*sizeof (GLushort), mesh->indices, GL_STATIC_DRAW);
         //glBindBuffer (GL_ELEMENT_ARRAY_BUFFER, 0);
 
-        // Vertex Positions
+
+        // メモリ上の頂点構造体(vertex_t)のポジションの位置を指定します。
         glEnableVertexAttribArray (0);
         glVertexAttribPointer (0, 3, GL_FLOAT, GL_FALSE, sizeof (vertex_t), (GLvoid *) offsetof (vertex_t, position));
 
-        // Vertex Normals
+
+        // メモリ上の頂点構造体(vertex_t)のノーマルの位置を指定します。
         glEnableVertexAttribArray (1);
         glVertexAttribPointer (1, 3, GL_FLOAT, GL_FALSE, sizeof (vertex_t), (GLvoid *) offsetof (vertex_t, normal));
 
-        // Unbind the VAO, not the EBO, otherwise our VAO will lose it's EBO
+
+        // glBindVertexArray に0を指定するとVAOを解放します。
         glBindVertexArray (0);
 
         result = mesh;
@@ -540,8 +550,8 @@ ZTR_INIT (ztrInit)
     glGetString (GL_VERSION);
 
     g_platform = platform;
-
     g_scene.shaderCount = 0;
+
 
     GLint major, minor;
     glGetIntegerv (GL_MAJOR_VERSION, &major);
@@ -554,19 +564,24 @@ ZTR_INIT (ztrInit)
 
     assert (shadingVersion != ShadingLanguageVersion_None);
 
+    // OpenGL ESの設定
     GLint m_viewport[4];
     glGetIntegerv (GL_VIEWPORT, m_viewport);
 
     glEnable (GL_CULL_FACE);
     glEnable (GL_BLEND);
+    glEnable (GL_DEPTH_TEST);
+    glDepthFunc (GL_LESS);
 
-    // Expects pre multiplied alpha values
     glBlendEquationSeparate (GL_FUNC_ADD,GL_FUNC_ADD);
     glBlendFuncSeparate (GL_ONE, GL_ONE_MINUS_SRC_ALPHA, GL_ONE, GL_ONE_MINUS_SRC_ALPHA);
+
 
     // Does nothing by itself, Need to use FBOs for MSAA
     // glEnable (GL_MULTISAMPLE);
 
+
+    // GPU上に直接実行するシェーダーというプログラムをテキストファイルから読み込む
     assert (g_scene.shaderCount < MAX_SHADERS);
     g_scene.objectShader = g_scene.shaders + g_scene.shaderCount++;
     g_scene.objectShader->program = LoadShaders (shadingVersion, (char *) "shaders/object_vert.glsl", (char *) "shaders/object_frag.glsl");
@@ -574,8 +589,7 @@ ZTR_INIT (ztrInit)
 
     glUseProgram (g_scene.objectShader->program);
 
-    // Set the shader colors only once
-    // Must call glUseProgram for the corresponding shader program first, to set the uniform
+    // 一回、シェーダーの色を設定
     GLint objectColorLoc = glGetUniformLocation (g_scene.objectShader->program, "objectColor");
     glUniform3f (objectColorLoc, 255.f/255.99f, 174.f/255.99f, 82.f/255.99f);
     GL_CHECK_ERROR ();
@@ -590,12 +604,16 @@ ZTR_INIT (ztrInit)
     glUniform3f (lightPosLoc, lightPos.X, lightPos.Y, lightPos.Z);
     GL_CHECK_ERROR ();
 
-    // Init all structs
+
+    // すべての構造体の初期値を設定する関数を呼び出す
     InitScene (&g_scene);
     InitCam (&g_scene.camera);
     InitMouse (&g_scene.mouse);
 
-    // Load Stanford Bunny
+
+    // Stanford Bunny メッシュを読み込む
+    // loadObj 関数はメッシュのVAO、VBO、EBO、バッファを初期化します。
+    // 簡単に言うとGPU上に頂点とインデックスのデータを保存する領域を確保しています。
     mesh_t *bunnyMesh = loadObj ("bunny_vn.obj");
     float S = 1.f;
     bunnyMesh->S = HMM_Scale (HMM_Vec3 (S, S, S));
@@ -644,14 +662,11 @@ ZTR_RESIZE (ztrResize)
 
 ZTR_DRAW (ztrDraw)
 {
-    glEnable (GL_DEPTH_TEST);
-    glDepthFunc (GL_LESS);
-
+    // 白色を塗りつぶす
     glClearColor (1.f, 1.f, 1.f, 1.f);
-
     glClear (GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-    // Should make atomic
+
     if (g_scene.ready)
     {
         camera_t *cam = &g_scene.camera;
@@ -842,20 +857,15 @@ ZTR_DRAW (ztrDraw)
         // float deltaTime = (float) (g_scene.currentTime - g_scene.lastTime);
         g_scene.lastTime = g_scene.currentTime;
 
-        // Projection/view matrices
+
+        // 射影行列とビュー行列を作成します。
         float ratio = (float) g_scene.screenDims.Y/(float) g_scene.screenDims.X;
         float orth = cam->orthScale;
         hmm_mat4 projection = HMM_Orthographic (-orth, orth, -ratio*orth, ratio*orth, CAM_NEAR, CAM_FAR);
         hmm_mat4 view = HMM_LookAt (cam->pos, CAM_LOOKAT_CENTER, CAM_LOOKAT_UP);
 
-        glUseProgram (g_scene.objectShader->program);
-        GL_CHECK_ERROR ();
 
-        hmm_vec3 lightPos = HMM_Vec3 (1,1,2);
-        GLint lightPosLoc = glGetUniformLocation (g_scene.objectShader->program, "lightPos");
-        glUniform3f (lightPosLoc, cam->pos[0], cam->pos[1], cam->pos[2]);
-        GL_CHECK_ERROR ();
-
+        // 射影行列とビュー行列をシェーダープログラムに渡します。
         for (int i=0 ; i<g_scene.shaderCount; i++)
         {
             shader_t *shader = g_scene.shaders + i;
@@ -871,6 +881,8 @@ ZTR_DRAW (ztrDraw)
             GL_CHECK_ERROR ();
         }
 
+
+        // メッシュの位置、回転情報をシェーダープログラムに渡します。
         for (int i=0 ; i<g_scene.meshCount; i++)
         {
             mesh_t *mesh = g_scene.meshes + i;
@@ -897,5 +909,15 @@ ZTR_DRAW (ztrDraw)
             glBindVertexArray (0);
             GL_CHECK_ERROR ();
         }
+
+
+        // 懐中電灯の効果のためカメラの位置をシェーダープログラムに渡します。
+        glUseProgram (g_scene.objectShader->program);
+        GL_CHECK_ERROR ();
+
+        hmm_vec3 lightPos = HMM_Vec3 (1,1,2);
+        GLint lightPosLoc = glGetUniformLocation (g_scene.objectShader->program, "lightPos");
+        glUniform3f (lightPosLoc, cam->pos[0], cam->pos[1], cam->pos[2]);
+        GL_CHECK_ERROR ();
     }
 }

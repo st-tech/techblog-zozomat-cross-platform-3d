@@ -34,10 +34,8 @@
 		BC80518E22F3E5170070EB5E /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		BC80518F22F3E5170070EB5E /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BC80519022F3E5170070EB5E /* RenderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RenderViewController.h; sourceTree = "<group>"; };
-		BC80519F22F3E5980070EB5E /* stb_c_lexer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = stb_c_lexer.h; sourceTree = "<group>"; };
 		BC8051A222F3E5980070EB5E /* HandmadeMath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HandmadeMath.h; sourceTree = "<group>"; };
 		BC8051A322F3E5980070EB5E /* tinyobj_loader_c.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tinyobj_loader_c.h; sourceTree = "<group>"; };
-		BC8051A622F3E5980070EB5E /* stb_image.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = stb_image.h; sourceTree = "<group>"; };
 		BC85289423D65B93002A7D4A /* libfoot-model-binary.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = "libfoot-model-binary.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC8528A623D65C2F002A7D4A /* libfoot-model-binary copy.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = "libfoot-model-binary copy.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC8528A823D65C5A002A7D4A /* libfoot-model-binary-osx.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = "libfoot-model-binary-osx.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -52,6 +50,7 @@
 		BC8528BA23D911C3002A7D4A /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		BC8528BC23D911ED002A7D4A /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
 		BC8E1B97247245EC0084EA2F /* res */ = {isa = PBXFileReference; lastKnownFileType = folder; name = res; path = ../../res; sourceTree = "<group>"; };
+		BC96B83124861171005E9E96 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		BCADE4182473EE1300921C90 /* ztr_platform_abstraction_layer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ztr_platform_abstraction_layer.h; sourceTree = "<group>"; };
 		BCADE4192473EE1300921C90 /* ztr_platform_independent_layer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ztr_platform_independent_layer.cpp; sourceTree = "<group>"; };
 		BCC20AC122DD683F009F3FCC /* ztr-osx.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ztr-osx.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -117,8 +116,6 @@
 		BC80519E22F3E5980070EB5E /* common */ = {
 			isa = PBXGroup;
 			children = (
-				BC80519F22F3E5980070EB5E /* stb_c_lexer.h */,
-				BC8051A622F3E5980070EB5E /* stb_image.h */,
 				BC8051A322F3E5980070EB5E /* tinyobj_loader_c.h */,
 				BC8051A222F3E5980070EB5E /* HandmadeMath.h */,
 				BCADE4182473EE1300921C90 /* ztr_platform_abstraction_layer.h */,
@@ -131,6 +128,7 @@
 		BCC20AB822DD683F009F3FCC = {
 			isa = PBXGroup;
 			children = (
+				BC96B83124861171005E9E96 /* README.md */,
 				BC80518622F3E5170070EB5E /* ztr-osx */,
 				BCC20AC222DD683F009F3FCC /* Products */,
 				BC14B13A22F0268E00335B2A /* Frameworks */,
@@ -372,7 +370,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				PRODUCT_BUNDLE_IDENTIFIER = "zozo.com.ztr-osx";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -386,7 +384,7 @@
 				CODE_SIGN_ENTITLEMENTS = "ztr-osx/footrenderer.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 8238P2PME9;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					GLES_SILENCE_DEPRECATION,
 					GL_SILENCE_DEPRECATION,
@@ -402,7 +400,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				PRODUCT_BUNDLE_IDENTIFIER = "zozo.com.ztr-osx";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};

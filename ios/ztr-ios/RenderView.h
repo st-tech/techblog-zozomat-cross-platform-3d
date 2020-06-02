@@ -1,6 +1,8 @@
 //
-//  RenderView.h
-//  ZOZO Technologies Cross Platform Renderer Example
+// See LICENSE.txt for this sample’s licensing information.
+//
+// RenderView.h
+// ZOZO Technologies Cross Platform Renderer Example
 //
 
 #import <UIKit/UIKit.h>

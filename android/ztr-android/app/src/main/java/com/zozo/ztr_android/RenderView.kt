@@ -1,3 +1,10 @@
+//
+// See LICENSE.txt for this sample’s licensing information.
+//
+// RenderView.kt
+// ZOZO Technologies Cross Platform Renderer Example
+//
+
 package com.zozo.ztr_android
 
 import android.content.Context

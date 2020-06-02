@@ -1,6 +1,8 @@
 //
-//  main.m
-//  ZOZO Technologies Cross Platform Renderer Example
+// See LICENSE.txt for this sample’s licensing information.
+//
+// main.m
+// ZOZO Technologies Cross Platform Renderer Example
 //
 
 #import <UIKit/UIKit.h>

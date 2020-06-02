@@ -1,6 +1,8 @@
 //
-//  AppDelegate.m
-//  ZOZO Technologies Cross Platform Renderer Example
+// See LICENSE.txt for this sample’s licensing information.
+//
+// AppDelegate.m
+// ZOZO Technologies Cross Platform Renderer Example
 //
 
 #import "AppDelegate.h"

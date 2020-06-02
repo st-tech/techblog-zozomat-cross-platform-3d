@@ -1,26 +1,21 @@
-#include <jni.h>
-#include <string>
-
-#include <android/log.h>
+//
+// See LICENSE.txt for this sample’s licensing information.
+//
+// RenderLib_ndk.cpp
+// ZOZO Technologies Cross Platform Renderer Example
+//
 
 #define APPNAME "com.zozo.ztr_android"
-
-#include <EGL/egl.h>
-//// Include the latest possible header file( GL version header )
-//// #if __ANDROID_API__ >= 24
-//// #include <GLES3/gl32.h>
-//// #elif __ANDROID_API__ >= 21
-//// #include <GLES3/gl31.h>
-//// #else
-//// #include <GLES3/gl3.h>
-//// #endif
-//// #include <GLES3/gl3.h>
 
 #import "ztr_platform_abstraction_layer.h"
 
 #include <android/asset_manager.h>
 #include <android/asset_manager_jni.h>
 #include <assert.h>
+#include <jni.h>
+#include <string>
+#include <android/log.h>
+#include <EGL/egl.h>
 
 static JavaVM* javaVm;
 static AAssetManager* asset_manager;

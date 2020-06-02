@@ -1,6 +1,8 @@
 //
-//  ztr_platform_abstraction_layer.h
-//  ZOZO Technologies Cross Platform Renderer Example
+// See LICENSE.txt for this sample’s licensing information.
+//
+// ztr_platform_abstraction_layer.h
+// ZOZO Technologies Cross Platform Renderer Example
 //
 
 #ifndef FOOT_RENDERER_H

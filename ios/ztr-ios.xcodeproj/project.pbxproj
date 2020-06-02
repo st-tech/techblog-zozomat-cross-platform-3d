@@ -32,10 +32,8 @@
 		BCACF52424725AE000B76D3D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BCACF52524725AE000B76D3D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		BCACF53724725EEE00B76D3D /* res */ = {isa = PBXFileReference; lastKnownFileType = folder; name = res; path = ../../res; sourceTree = "<group>"; };
-		BCACF53C24725F2C00B76D3D /* stb_c_lexer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = stb_c_lexer.h; sourceTree = "<group>"; };
 		BCACF53D24725F2C00B76D3D /* HandmadeMath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HandmadeMath.h; sourceTree = "<group>"; };
 		BCACF53E24725F2C00B76D3D /* tinyobj_loader_c.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tinyobj_loader_c.h; sourceTree = "<group>"; };
-		BCACF54224725F2C00B76D3D /* stb_image.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = stb_image.h; sourceTree = "<group>"; };
 		BCACF5472472636300B76D3D /* RenderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RenderView.m; sourceTree = "<group>"; };
 		BCACF5482472636300B76D3D /* RenderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RenderView.h; sourceTree = "<group>"; };
 		BCADE41B2473EE7900921C90 /* ztr_platform_abstraction_layer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ztr_platform_abstraction_layer.h; sourceTree = "<group>"; };
@@ -89,10 +87,8 @@
 		BCACF53B24725F2C00B76D3D /* common */ = {
 			isa = PBXGroup;
 			children = (
-				BCACF53C24725F2C00B76D3D /* stb_c_lexer.h */,
 				BCACF53D24725F2C00B76D3D /* HandmadeMath.h */,
 				BCACF53E24725F2C00B76D3D /* tinyobj_loader_c.h */,
-				BCACF54224725F2C00B76D3D /* stb_image.h */,
 				BCADE41B2473EE7900921C90 /* ztr_platform_abstraction_layer.h */,
 				BCADE41C2473EE7900921C90 /* ztr_platform_independent_layer.cpp */,
 			);

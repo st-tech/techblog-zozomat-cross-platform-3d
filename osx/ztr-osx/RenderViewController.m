@@ -1,6 +1,8 @@
 //
-//  RenderViewController.m
-//  ZOZO Technologies Cross Platform Renderer Example
+// See LICENSE.txt for this sample’s licensing information.
+//
+// RenderViewController.m
+// ZOZO Technologies Cross Platform Renderer Example
 //
 
 #include <sys/mman.h>

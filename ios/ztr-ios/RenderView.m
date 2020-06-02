@@ -1,6 +1,8 @@
 //
-//  RenderView.m
-//  ZOZO Technologies Cross Platform Renderer Example
+// See LICENSE.txt for this sample’s licensing information.
+//
+// RenderView.m
+// ZOZO Technologies Cross Platform Renderer Example
 //
 
 #import "ztr_platform_abstraction_layer.h"

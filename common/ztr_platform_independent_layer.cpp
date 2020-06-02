@@ -1,6 +1,8 @@
 //
-//  ztr_platform_independent_layer.cpp
-//  ZOZO Technologies Cross Platform Renderer Example
+// See LICENSE.txt for this sample’s licensing information.
+//
+// ztr_platform_independent_layer.cpp
+// ZOZO Technologies Cross Platform Renderer Example
 //
 
 // MARK: Includes

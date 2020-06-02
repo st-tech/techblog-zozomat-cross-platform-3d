@@ -1,3 +1,10 @@
+//
+// See LICENSE.txt for this sample’s licensing information.
+//
+// MainActivity.kt
+// ZOZO Technologies Cross Platform Renderer Example
+//
+
 package com.zozo.ztr_android
 
 import androidx.appcompat.app.AppCompatActivity

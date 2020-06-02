@@ -29,6 +29,9 @@ Android: Android 5.0（API レベル 21） 以降
 このサンプルのライセンス情報については、LICENSE.txtを参照してください。
 
 次の単一ヘッダーライブラリが使用されます。
+
 `./common/HandmadeMath.h`
+
 `./common/tinyobj_loader_c.h`
+
 ライセンスについてはソースファイルを参照してください。

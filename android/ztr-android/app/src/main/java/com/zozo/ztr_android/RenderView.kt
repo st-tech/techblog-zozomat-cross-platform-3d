@@ -72,7 +72,9 @@ class RenderView(context: Context, onSurfaceCreatedClosure: ((view: RenderView) 
         override fun onSurfaceCreated(gl: GL10, config: EGLConfig) {
             RenderLib.init(this.assetManager)
 
-            onSurfaceCreatedClosure?.invoke(this.view!!)
+            this.view?.let {
+                onSurfaceCreatedClosure?.invoke(it)
+            }
         }
     }
 }

@@ -6,7 +6,7 @@
 
 そして、サンプルコードと、クロスプラットフォーム実装のベストプラクティスについて説明します。
 
-![zozomat_pr_001](./images/bunny_sample_project_01.png)
+![zozomat_pr_001](./images/bunny01.png)
 
 このサンプルは、次の記事に関連しています。
 

@@ -42,7 +42,6 @@
 		BCADE41C2473EE7900921C90 /* ztr_platform_independent_layer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ztr_platform_independent_layer.cpp; sourceTree = "<group>"; };
 		BCD1254722F3E920004F311B /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.2.sdk/System/Library/Frameworks/OpenGLES.framework; sourceTree = DEVELOPER_DIR; };
 		BCD1D4D823DD27760079D637 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.4.sdk/System/Library/Frameworks/CoreGraphics.framework; sourceTree = DEVELOPER_DIR; };
-		BCFAC0E72397696300E03A9A /* libfoot-model-binary.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = "libfoot-model-binary.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,7 +60,6 @@
 			children = (
 				BCD1D4D823DD27760079D637 /* CoreGraphics.framework */,
 				BC76C22723A0D29F00F2DB31 /* UIKit.framework */,
-				BCFAC0E72397696300E03A9A /* libfoot-model-binary.a */,
 				BCD1254722F3E920004F311B /* OpenGLES.framework */,
 				BC14B13B22F0268E00335B2A /* OpenGL.framework */,
 			);

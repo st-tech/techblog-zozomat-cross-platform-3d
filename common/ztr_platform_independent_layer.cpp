@@ -962,7 +962,6 @@ ZTR_DRAW (ztrDraw)
         glUseProgram (g_scene.objectShader->program);
         GL_CHECK_ERROR ();
 
-        hmm_vec3 lightPos = HMM_Vec3 (1,1,2);
         GLint lightPosLoc =
             glGetUniformLocation (g_scene.objectShader->program, "lightPos");
         glUniform3f (lightPosLoc, cam->pos[0], cam->pos[1], cam->pos[2]);

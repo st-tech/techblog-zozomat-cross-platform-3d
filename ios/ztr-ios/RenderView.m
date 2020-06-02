@@ -243,31 +243,6 @@ PLATFORM_OPEN_FILE (openFile)
     [self drawView:nil];
 }
 
-- (NSInteger) animationFrameInterval
-{
-	return _animationFrameInterval;
-}
-
-- (void) setAnimationFrameInterval:(NSInteger)frameInterval
-{
-	// Frame interval defines how many display frames must pass between each time the
-	// display link fires. The display link will only fire 30 times a second when the
-	// frame internal is two on a display that refreshes 60 times a second. The default
-	// frame interval setting of one will fire 60 times a second when the display refreshes
-	// at 60 times a second. A frame interval setting of less than one results in undefined
-	// behavior.
-	if (frameInterval >= 1)
-	{
-		_animationFrameInterval = frameInterval;
-
-		if (_animating)
-		{
-			[self stopAnimation];
-			[self startAnimation];
-		}
-	}
-}
-
 - (void) startAnimation
 {
 	if (!_animating)

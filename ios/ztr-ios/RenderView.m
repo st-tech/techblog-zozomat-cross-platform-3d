@@ -37,7 +37,7 @@ static ztr_platform_api_t g_platform;
     return [CAEAGLLayer class];
 }
 
-PLATFORM_OPEN_RESOURCE_FILE (openResourceFile)
+PLATFORM_OPEN_FILE (openFile)
 {
     ztr_file_t result = {};
 
@@ -128,7 +128,7 @@ PLATFORM_OPEN_RESOURCE_FILE (openResourceFile)
     UIPinchGestureRecognizer *pinchGestureRecognizer = [[UIPinchGestureRecognizer alloc] initWithTarget:self action:@selector(pinchZoomAction:)];
     [self addGestureRecognizer:pinchGestureRecognizer];
 
-    g_platform.openResourceFile = openResourceFile;
+    g_platform.openFile = openFile;
 
     ztrInit(&g_platform);
     ztrResize (0, backingWidth, backingHeight);

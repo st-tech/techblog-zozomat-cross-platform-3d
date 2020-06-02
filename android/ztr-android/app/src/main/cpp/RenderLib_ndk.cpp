@@ -28,7 +28,7 @@ static AAssetManager* asset_manager;
 static ztr_platform_api_t g_platform;
 static ztr_hid_t hid;
 
-PLATFORM_OPEN_RESOURCE_FILE(openResourceFile)
+PLATFORM_OPEN_FILE(openFile)
 {
     assert (fileName != NULL);
     ztr_file_t result = {};
@@ -50,7 +50,7 @@ Java_com_zozo_ztr_1android_RenderLib_init(JNIEnv* env, void *reserved, jobject a
 
     env->GetJavaVM(&javaVm);
     asset_manager = AAssetManager_fromJava(env, assetManager);
-    g_platform.openResourceFile = openResourceFile;
+    g_platform.openFile = openFile;
 
     ztrInit (&g_platform);
 }

@@ -71,7 +71,7 @@ static CVReturn MyDisplayLinkCallback(CVDisplayLinkRef displayLink,
     [[self window] setAcceptsMouseMovedEvents:YES];
 }
 
-PLATFORM_OPEN_RESOURCE_FILE (openResourceFile)
+PLATFORM_OPEN_FILE (openFile)
 {
     ztr_file_t result = {};
 
@@ -96,27 +96,27 @@ PLATFORM_OPEN_RESOURCE_FILE (openResourceFile)
 
 - (void) prepareOpenGL
 {
-	[super prepareOpenGL];
-	[[self openGLContext] makeCurrentContext];
+    [super prepareOpenGL];
+    [[self openGLContext] makeCurrentContext];
 
-	// Synchronize buffer swaps with vertical refresh rate
-	GLint swapInt = 1;
-	[[self openGLContext] setValues:&swapInt forParameter:NSOpenGLCPSwapInterval];
+    // Synchronize buffer swaps with vertical refresh rate
+    GLint swapInt = 1;
+    [[self openGLContext] setValues:&swapInt forParameter:NSOpenGLCPSwapInterval];
 
-	CVDisplayLinkCreateWithActiveCGDisplays(&displayLink);
-	CVDisplayLinkSetOutputCallback(displayLink, &MyDisplayLinkCallback, (__bridge void*)self);
-	CGLContextObj cglContext = [[self openGLContext] CGLContextObj];
-	CGLPixelFormatObj cglPixelFormat = [[self pixelFormat] CGLPixelFormatObj];
-	CVDisplayLinkSetCurrentCGDisplayFromOpenGLContext(displayLink, cglContext, cglPixelFormat);
+    CVDisplayLinkCreateWithActiveCGDisplays(&displayLink);
+    CVDisplayLinkSetOutputCallback(displayLink, &MyDisplayLinkCallback, (__bridge void*)self);
+    CGLContextObj cglContext = [[self openGLContext] CGLContextObj];
+    CGLPixelFormatObj cglPixelFormat = [[self pixelFormat] CGLPixelFormatObj];
+    CVDisplayLinkSetCurrentCGDisplayFromOpenGLContext(displayLink, cglContext, cglPixelFormat);
 
-	CVDisplayLinkStart(displayLink);
+    CVDisplayLinkStart(displayLink);
 
-	[[NSNotificationCenter defaultCenter] addObserver:self
-											 selector:@selector(windowWillClose:)
-												 name:NSWindowWillCloseNotification
-											   object:[self window]];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(windowWillClose:)
+                                                 name:NSWindowWillCloseNotification
+                                               object:[self window]];
 
-    g_platform.openResourceFile = openResourceFile;
+    g_platform.openFile = openFile;
     ztrInit(&g_platform);
 }
 

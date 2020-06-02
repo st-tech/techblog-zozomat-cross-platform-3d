@@ -78,14 +78,14 @@ typedef struct ztr_file_t
 
 // MARK: Platform call functions
 
-#define PLATFORM_OPEN_RESOURCE_FILE(name) ztr_file_t name(const char *fileName)
-typedef PLATFORM_OPEN_RESOURCE_FILE(platform_open_resource_file);
+#define PLATFORM_OPEN_FILE(name) ztr_file_t name(const char *fileName)
+typedef PLATFORM_OPEN_FILE(platform_open_file);
 
 // MARK: Platform call API
 
 typedef struct ztr_platform_api_t
 {
-    platform_open_resource_file *openResourceFile;
+    platform_open_file *openFile;
 
 } ztr_platform_api_t;
 

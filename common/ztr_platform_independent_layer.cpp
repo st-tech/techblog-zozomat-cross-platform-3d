@@ -298,11 +298,11 @@ LoadShaders (shading_version_t shadingVersion, char *vertexFileName, char *fragm
     GLuint vertexShaderID = glCreateShader (GL_VERTEX_SHADER);
     GLuint fragmentShaderID = glCreateShader (GL_FRAGMENT_SHADER);
 
-    ztr_file_t vertexShaderFile = g_platform->openResourceFile (vertexFileName);
+    ztr_file_t vertexShaderFile = g_platform->openFile (vertexFileName);
     if (vertexShaderFile.data == NULL)
         assert (!"Could not load vertex shader.\n");
 
-    ztr_file_t fragmentShaderFile = g_platform->openResourceFile (fragmentFileName);
+    ztr_file_t fragmentShaderFile = g_platform->openFile (fragmentFileName);
     if (fragmentShaderFile.data == NULL)
         assert (!"Could not load fragment shader.\n");
 
@@ -415,7 +415,7 @@ LoadShaders (shading_version_t shadingVersion, char *vertexFileName, char *fragm
 static mesh_t *
 loadObj (const char *fileName)
 {
-    ztr_file_t file = g_platform->openResourceFile (fileName);
+    ztr_file_t file = g_platform->openFile (fileName);
 
     mesh_t *result = NULL;
 

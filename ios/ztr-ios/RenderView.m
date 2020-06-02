@@ -41,11 +41,16 @@ PLATFORM_OPEN_FILE (openFile)
 {
     ztr_file_t result = {};
 
-    NSArray *components = [[NSString stringWithUTF8String:fileName] componentsSeparatedByString:@"."];
+    NSArray *components =
+        [[NSString stringWithUTF8String:fileName]
+            componentsSeparatedByString:@"."];
     if (components.count == 2)
     {
-        NSString *fileNameBase = [NSString stringWithFormat:@"res/%@", components[0]];
-        NSURL *fileUrl = [[NSBundle mainBundle] URLForResource:fileNameBase withExtension:components[1]];
+        NSString *fileNameBase =
+            [NSString stringWithFormat:@"res/%@", components[0]];
+        NSURL *fileUrl =
+            [[NSBundle mainBundle] URLForResource:fileNameBase
+                                    withExtension:components[1]];
 
         NSFileManager *manager = [NSFileManager defaultManager];
         NSData *data = [manager contentsAtPath:fileUrl.path];
@@ -76,8 +81,13 @@ PLATFORM_OPEN_FILE (openFile)
     eaglLayer.opaque = TRUE;
 
     eaglLayer.contentsScale = screenScale;
-    eaglLayer.drawableProperties = [NSDictionary dictionaryWithObjectsAndKeys:
-                                    [NSNumber numberWithBool:FALSE], kEAGLDrawablePropertyRetainedBacking, kEAGLColorFormatRGBA8, kEAGLDrawablePropertyColorFormat, nil];
+    eaglLayer.drawableProperties =
+        [NSDictionary dictionaryWithObjectsAndKeys:
+            [NSNumber numberWithBool:FALSE],
+            kEAGLDrawablePropertyRetainedBacking,
+            kEAGLColorFormatRGBA8,
+            kEAGLDrawablePropertyColorFormat,
+            nil];
 
 	_context = [[EAGLContext alloc] initWithAPI:kEAGLRenderingAPIOpenGLES3];
 

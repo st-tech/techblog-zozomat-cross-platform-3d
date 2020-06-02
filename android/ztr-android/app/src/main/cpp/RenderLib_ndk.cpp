@@ -47,7 +47,6 @@ PLATFORM_OPEN_FILE(openFile)
 extern "C" JNIEXPORT void JNICALL
 Java_com_zozo_ztr_1android_RenderLib_init(JNIEnv* env, void *reserved, jobject assetManager)
 {
-
     env->GetJavaVM(&javaVm);
     asset_manager = AAssetManager_fromJava(env, assetManager);
     g_platform.openFile = openFile;

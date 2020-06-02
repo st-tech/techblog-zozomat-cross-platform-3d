@@ -273,8 +273,12 @@ cubicBezier (float u)
     hmm_vec3 p3 = HMM_Vec3 (1.f, 1.f, 0.f);
 
     // Ignoring x, we only need a single value
-    // float xu = pow(1 - u, 3)*p0.X + 3*u*pow(1 - u, 2)*p1.X + 3*pow(u, 2)*(1 - u)*p2.X + pow(u, 3)*p3.X;
-    float yu = pow(1 - u, 3)*p0.Y + 3*u*pow(1 - u, 2)*p1.Y + 3*pow(u, 2)*(1 - u)*p2.Y + pow(u, 3)*p3.Y;
+    // float xu =
+    //    pow(1 - u, 3)*p0.X + 3*u*pow(1 - u, 2)*p1.X +
+    //    3*pow(u, 2)*(1 - u)*p2.X + pow(u, 3)*p3.X;
+    float yu =
+        pow(1 - u, 3)*p0.Y + 3*u*pow(1 - u, 2)*p1.Y +
+        3*pow(u, 2)*(1 - u)*p2.Y + pow(u, 3)*p3.Y;
 
     return (yu);
 }
@@ -284,15 +288,21 @@ UpdateCamPos (camera_t *cam)
 {
     hmm_vec3 dir;
 
-    dir.X = HMM_CosF (HMM_ToRadians (cam->yaw)) * HMM_CosF(HMM_ToRadians (cam->pitch));
-    dir.Y = HMM_SinF (HMM_ToRadians (cam->pitch));
-    dir.Z = HMM_SinF (HMM_ToRadians (cam->yaw)) * HMM_CosF(HMM_ToRadians (cam->pitch));
+    dir.X =
+        HMM_CosF (HMM_ToRadians (cam->yaw)) *
+        HMM_CosF(HMM_ToRadians (cam->pitch));
+    dir.Y =
+        HMM_SinF (HMM_ToRadians (cam->pitch));
+    dir.Z =
+        HMM_SinF (HMM_ToRadians (cam->yaw)) *
+        HMM_CosF(HMM_ToRadians (cam->pitch));
 
     cam->pos = HMM_NormalizeVec3 (dir)*cam->radius;
 }
 
 GLuint
-LoadShaders (shading_version_t shadingVersion, char *vertexFileName, char *fragmentFileName)
+LoadShaders (shading_version_t shadingVersion,
+             char *vertexFileName, char *fragmentFileName)
 {
     // Create vertex and fragment shaders
     GLuint vertexShaderID = glCreateShader (GL_VERTEX_SHADER);
@@ -338,17 +348,22 @@ LoadShaders (shading_version_t shadingVersion, char *vertexFileName, char *fragm
 
     int versionStringSize = (int) strlen (versionString);
 
-    // TODO: Error check mallocs.
-    int vertexShaderSourceSize = vertexShaderFile.dataSize + versionStringSize;
+    int vertexShaderSourceSize =
+        vertexShaderFile.dataSize + versionStringSize;
     char *vertexShaderSource = (char *) malloc (vertexShaderSourceSize + 1);
-    memcpy ((void *) vertexShaderSource, (void *) versionString, versionStringSize);
-    memcpy ((void *) (vertexShaderSource + versionStringSize), vertexShaderFile.data, vertexShaderFile.dataSize);
+    memcpy ((void *) vertexShaderSource,
+            (void *) versionString, versionStringSize);
+    memcpy ((void *) (vertexShaderSource + versionStringSize),
+            vertexShaderFile.data, vertexShaderFile.dataSize);
     vertexShaderSource[vertexShaderSourceSize] = '\0';
 
-    int fragmentShaderSourceSize = fragmentShaderFile.dataSize + versionStringSize;
+    int fragmentShaderSourceSize =
+        fragmentShaderFile.dataSize + versionStringSize;
     char *fragmentShaderSource = (char *) malloc (fragmentShaderSourceSize + 1);
-    memcpy ((void *) fragmentShaderSource, (void *) versionString, versionStringSize);
-    memcpy ((void *) (fragmentShaderSource + versionStringSize), fragmentShaderFile.data, fragmentShaderFile.dataSize);
+    memcpy ((void *) fragmentShaderSource,
+            (void *) versionString, versionStringSize);
+    memcpy ((void *) (fragmentShaderSource + versionStringSize),
+            fragmentShaderFile.data, fragmentShaderFile.dataSize);
     fragmentShaderSource[fragmentShaderSourceSize] = '\0';
 
     GLint Result = GL_FALSE;
@@ -365,13 +380,15 @@ LoadShaders (shading_version_t shadingVersion, char *vertexFileName, char *fragm
 
     if (infoLogLength > 0 ){
         std::vector<char> vertexShaderErrorMessage (infoLogLength + 1);
-        glGetShaderInfoLog (vertexShaderID, infoLogLength, NULL, &vertexShaderErrorMessage[0]);
+        glGetShaderInfoLog (vertexShaderID, infoLogLength,
+                            NULL, &vertexShaderErrorMessage[0]);
         printf ("%s\n", &vertexShaderErrorMessage[0]);
     }
 
     // Compile Fragment Shader
     printf ("Compiling shader : %s\n", fragmentFileName);
-    glShaderSource (fragmentShaderID, 1, (const GLchar **) &fragmentShaderSource, NULL);
+    glShaderSource (fragmentShaderID, 1, (const GLchar **)
+                    &fragmentShaderSource, NULL);
     glCompileShader (fragmentShaderID);
 
     // Check Fragment Shader
@@ -380,7 +397,8 @@ LoadShaders (shading_version_t shadingVersion, char *vertexFileName, char *fragm
     if (infoLogLength > 0)
     {
         std::vector<char> fragmentShaderErrorMessage (infoLogLength + 1);
-        glGetShaderInfoLog (fragmentShaderID, infoLogLength, NULL, &fragmentShaderErrorMessage[0]);
+        glGetShaderInfoLog (fragmentShaderID, infoLogLength,
+                            NULL, &fragmentShaderErrorMessage[0]);
         printf ("%s\n", &fragmentShaderErrorMessage[0]);
     }
 
@@ -397,7 +415,8 @@ LoadShaders (shading_version_t shadingVersion, char *vertexFileName, char *fragm
     if (infoLogLength > 0)
     {
         std::vector<char> programErrorMessage (infoLogLength + 1);
-        glGetProgramInfoLog (programID, infoLogLength, NULL, &programErrorMessage[0]);
+        glGetProgramInfoLog (programID, infoLogLength,
+                             NULL, &programErrorMessage[0]);
         printf ("%s\n", &programErrorMessage[0]);
     }
 
@@ -421,6 +440,7 @@ loadObj (const char *fileName)
 
     if (file.data != NULL)
     {
+        // OBJ ファイル内容を読み込みます。
         tinyobj_attrib_t attrib;
         tinyobj_shape_t* shapes = NULL;
         size_t numShapes;
@@ -429,8 +449,11 @@ loadObj (const char *fileName)
 
         unsigned int flags = 0;
 
-        int parseResult = tinyobj_parse_obj (&attrib, &shapes, &numShapes, &materials,
-                &numMaterials, (const char *) file.data, file.dataSize, flags);
+        // tinyobj_parse_obj で頂点データを読み込みます。
+        int parseResult =
+            tinyobj_parse_obj (&attrib, &shapes, &numShapes, &materials,
+                               &numMaterials, (const char *) file.data,
+                               file.dataSize, flags);
 
         if ((parseResult == TINYOBJ_ERROR_EMPTY) ||
             (parseResult == TINYOBJ_ERROR_INVALID_PARAMETER) ||
@@ -443,10 +466,12 @@ loadObj (const char *fileName)
         mesh_t *mesh = g_scene.meshes + g_scene.meshCount++;
 
         mesh->indicesCount = 0;
-        mesh->indices = (GLushort *) malloc (sizeof (GLushort)*attrib.num_faces);
+        mesh->indices =
+            (GLushort *) malloc (sizeof (GLushort)*attrib.num_faces);
 
         mesh->verticesCount = 0;
-        mesh->vertices = (vertex_t *) malloc (sizeof (vertex_t)*attrib.num_faces);
+        mesh->vertices =
+            (vertex_t *) malloc (sizeof (vertex_t)*attrib.num_faces);
 
         // For now, we iterate every face and copy to a new vertex
         for (int i=0 ; i<attrib.num_faces ;  i++)
@@ -457,12 +482,14 @@ loadObj (const char *fileName)
             vertex_t *destVertex = mesh->vertices + destIndex;
 
             float *vertStart = attrib.vertices + sourceFace->v_idx*3;
-            destVertex->position = HMM_Vec3 (vertStart[0], vertStart[1], vertStart[2]);
+            destVertex->position =
+                HMM_Vec3 (vertStart[0], vertStart[1], vertStart[2]);
 
             if (sourceFace->vn_idx != TINYOBJ_INVALID_INDEX)
             {
                 float *normStart = attrib.normals + sourceFace->vn_idx*3;
-                destVertex->normal = HMM_Vec3 (normStart[0], normStart[1], normStart[2]);
+                destVertex->normal =
+                    HMM_Vec3 (normStart[0], normStart[1], normStart[2]);
             }
 
             mesh->indices[i] = (GLushort)i;
@@ -470,45 +497,42 @@ loadObj (const char *fileName)
             mesh->indicesCount++;
         }
 
-        // VAO、VBO、EBO、を初期化する。
+        // VAO、VBO、EBO、を初期化します。
         glGenVertexArrays (1, &mesh->VAO);
         glGenBuffers (1, &mesh->VBO);
         glGenBuffers (1, &mesh->EBO);
 
-
         // VAOを紐づけるとVBOとEBOを設定できます。
         glBindVertexArray (mesh->VAO);
 
-
         // VBOバファーメッシュのインデックスを割り当てます。
         glBindBuffer (GL_ARRAY_BUFFER, mesh->VBO);
-        glBufferData (GL_ARRAY_BUFFER, mesh->verticesCount*sizeof (vertex_t), mesh->vertices, GL_STATIC_DRAW);
-        //glBindBuffer (GL_ARRAY_BUFFER, 0);
-
+        glBufferData (GL_ARRAY_BUFFER,
+                      mesh->verticesCount*sizeof (vertex_t),
+                      mesh->vertices,
+                      GL_STATIC_DRAW);
 
         // EBOバファーメッシュのインデックスを割り当てます。
         glBindBuffer (GL_ELEMENT_ARRAY_BUFFER, mesh->EBO);
-        glBufferData (GL_ELEMENT_ARRAY_BUFFER, mesh->indicesCount*sizeof (GLushort), mesh->indices, GL_STATIC_DRAW);
-        //glBindBuffer (GL_ELEMENT_ARRAY_BUFFER, 0);
-
+        glBufferData (GL_ELEMENT_ARRAY_BUFFER,
+                      mesh->indicesCount*sizeof (GLushort),
+                      mesh->indices,
+                      GL_STATIC_DRAW);
 
         // メモリ上の頂点構造体(vertex_t)のポジションの位置を指定します。
         glEnableVertexAttribArray (0);
-        glVertexAttribPointer (0, 3, GL_FLOAT, GL_FALSE, sizeof (vertex_t), (GLvoid *) offsetof (vertex_t, position));
-
+        glVertexAttribPointer (0,3, GL_FLOAT, GL_FALSE, sizeof (vertex_t),
+                               (GLvoid *) offsetof (vertex_t, position));
 
         // メモリ上の頂点構造体(vertex_t)のノーマルの位置を指定します。
         glEnableVertexAttribArray (1);
-        glVertexAttribPointer (1, 3, GL_FLOAT, GL_FALSE, sizeof (vertex_t), (GLvoid *) offsetof (vertex_t, normal));
-
+        glVertexAttribPointer (1, 3, GL_FLOAT, GL_FALSE, sizeof (vertex_t),
+                               (GLvoid *) offsetof (vertex_t, normal));
 
         // glBindVertexArray に0を指定するとVAOを解放します。
         glBindVertexArray (0);
 
         result = mesh;
-
-        // TODO: IMPLEMENT FOR DEMO
-        // g_platform->closeAndFreeResourceFile(file);
     }
 
     return (result);
@@ -543,77 +567,77 @@ findShadingVersion (char *glShadingVersionString)
     return (result);
 }
 
-// MARK: Platform abstracted functions
+// MARK: Platform independent functions
 
 ZTR_INIT (ztrInit)
 {
-    glGetString (GL_VERSION);
-
+    // プラットフォームAPIのポインターを保存します。
     g_platform = platform;
     g_scene.shaderCount = 0;
 
+    // ここでプラットフォームに依存しない初期化コードを書きます。
+    glGetString (GL_VERSION);
 
     GLint major, minor;
     glGetIntegerv (GL_MAJOR_VERSION, &major);
     glGetIntegerv (GL_MINOR_VERSION, &minor);
     printf ("GL version major: %d minor: %d\n", major, minor);
 
-    char *shadingVersionString = (char *)glGetString (GL_SHADING_LANGUAGE_VERSION);
+    char *shadingVersionString =
+        (char *)glGetString (GL_SHADING_LANGUAGE_VERSION);
     printf ("GL shading language version: %s\n", shadingVersionString);
-    shading_version_t shadingVersion = findShadingVersion (shadingVersionString);
+    shading_version_t shadingVersion =
+        findShadingVersion (shadingVersionString);
 
     assert (shadingVersion != ShadingLanguageVersion_None);
 
-    // OpenGL ESの設定
+    // OpenGL ESを設定します。
     GLint m_viewport[4];
     glGetIntegerv (GL_VIEWPORT, m_viewport);
-
     glEnable (GL_CULL_FACE);
     glEnable (GL_BLEND);
     glEnable (GL_DEPTH_TEST);
     glDepthFunc (GL_LESS);
+    glBlendEquationSeparate (GL_FUNC_ADD, GL_FUNC_ADD);
+    glBlendFuncSeparate (GL_ONE, GL_ONE_MINUS_SRC_ALPHA,
+                         GL_ONE, GL_ONE_MINUS_SRC_ALPHA);
 
-    glBlendEquationSeparate (GL_FUNC_ADD,GL_FUNC_ADD);
-    glBlendFuncSeparate (GL_ONE, GL_ONE_MINUS_SRC_ALPHA, GL_ONE, GL_ONE_MINUS_SRC_ALPHA);
-
-
-    // Does nothing by itself, Need to use FBOs for MSAA
-    // glEnable (GL_MULTISAMPLE);
-
-
-    // GPU上に直接実行するシェーダーというプログラムをテキストファイルから読み込む
+    // シェーダープログラムをテキストファイルから読み込みます。
     assert (g_scene.shaderCount < MAX_SHADERS);
     g_scene.objectShader = g_scene.shaders + g_scene.shaderCount++;
-    g_scene.objectShader->program = LoadShaders (shadingVersion, (char *) "shaders/object_vert.glsl", (char *) "shaders/object_frag.glsl");
+    g_scene.objectShader->program =
+        LoadShaders (shadingVersion,
+                     (char *) "shaders/object_vert.glsl",
+                     (char *) "shaders/object_frag.glsl");
     g_scene.objectShader->elementType = GL_TRIANGLES;
-
     glUseProgram (g_scene.objectShader->program);
 
-    // 一回、シェーダーの色を設定
-    GLint objectColorLoc = glGetUniformLocation (g_scene.objectShader->program, "objectColor");
+    // 一回、シェーダーの色を設定します。
+    GLint objectColorLoc =
+        glGetUniformLocation (g_scene.objectShader->program, "objectColor");
     glUniform3f (objectColorLoc, 255.f/255.99f, 174.f/255.99f, 82.f/255.99f);
     GL_CHECK_ERROR ();
 
-    // Also set light’s color (white)
-    GLint lightColorLoc = glGetUniformLocation (g_scene.objectShader->program, "lightColor");
+    // 照明の色を白に設定します。
+    GLint lightColorLoc =
+        glGetUniformLocation (g_scene.objectShader->program, "lightColor");
     glUniform3f (lightColorLoc, 1.0f, 1.0f, 1.0f);
     GL_CHECK_ERROR ();
 
     hmm_vec3 lightPos = HMM_Vec3 (0.2,0,0.3);
-    GLint lightPosLoc = glGetUniformLocation (g_scene.objectShader->program, "lightPos");
+    GLint lightPosLoc =
+        glGetUniformLocation (g_scene.objectShader->program, "lightPos");
     glUniform3f (lightPosLoc, lightPos.X, lightPos.Y, lightPos.Z);
     GL_CHECK_ERROR ();
 
-
-    // すべての構造体の初期値を設定する関数を呼び出す
+    // すべての構造体の初期値を設定する関数を呼び出します。
     InitScene (&g_scene);
     InitCam (&g_scene.camera);
     InitMouse (&g_scene.mouse);
 
-
-    // Stanford Bunny メッシュを読み込む
+    // Stanford Bunny メッシュを読み込みます。
     // loadObj 関数はメッシュのVAO、VBO、EBO、バッファを初期化します。
-    // 簡単に言うとGPU上に頂点とインデックスのデータを保存する領域を確保しています。
+    // GPU上に頂点とインデックスのデータを保存する領域を確保しています。
     mesh_t *bunnyMesh = loadObj ("bunny_vn.obj");
     float S = 1.f;
     bunnyMesh->S = HMM_Scale (HMM_Vec3 (S, S, S));
@@ -623,7 +647,6 @@ ZTR_INIT (ztrInit)
 
     g_scene.ready = 1;
     g_scene.animatingIntroFade = 1;
-
 }
 
 ZTR_FREE (ztrFree)
@@ -662,10 +685,9 @@ ZTR_RESIZE (ztrResize)
 
 ZTR_DRAW (ztrDraw)
 {
-    // 白色を塗りつぶす
+    // 白色で塗りつぶします。
     glClearColor (1.f, 1.f, 1.f, 1.f);
     glClear (GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-
 
     if (g_scene.ready)
     {
@@ -678,7 +700,7 @@ ZTR_DRAW (ztrDraw)
         float labelPosAnimCurve = 1.f;
         float fadeMeshOpacity = 0.f;
 
-        // Check first to disable hid input while load animating
+        // タッチ操作の変化でカメラの位置を計算します。
         if (g_scene.animatingIntroFade)
         {
             if (g_scene.animT < 1.f)
@@ -687,8 +709,10 @@ ZTR_DRAW (ztrDraw)
                 fadeInAnimCurve = animCurve;
                 labelPosAnimCurve = animCurve;
 
-                cam->yaw = cam->yawAnimEnd + cam->yawAnimAmount*(1.f - animCurve);
-                cam->pitch = cam->pitchAnimEnd + cam->pitchAnimAmount*(1.f - animCurve);
+                cam->yaw =
+                    cam->yawAnimEnd + cam->yawAnimAmount*(1.f - animCurve);
+                cam->pitch =
+                    cam->pitchAnimEnd + cam->pitchAnimAmount*(1.f - animCurve);
 
                 fadeMeshOpacity = 1.f - animCurve;
 
@@ -750,15 +774,16 @@ ZTR_DRAW (ztrDraw)
             else
             {
                 cam->orthScale = cam->orthScale*(1.f/hid.pinchZoomScale);
-                cam->orthScale = Clamp (cam->orthScale, CAM_ORTH_SCALE_MIN, CAM_ORTH_SCALE_MAX);
-
+                cam->orthScale = Clamp (cam->orthScale,
+                                        CAM_ORTH_SCALE_MIN, CAM_ORTH_SCALE_MAX);
             }
 
         }
         else if (hid.pinchZoomActive == 1)
         {
             cam->orthScale = cam->orthScale*(1.f/hid.pinchZoomScale);
-            cam->orthScale = Clamp (cam->orthScale, CAM_ORTH_SCALE_MIN, CAM_ORTH_SCALE_MAX);
+            cam->orthScale = Clamp (cam->orthScale,
+                                    CAM_ORTH_SCALE_MIN, CAM_ORTH_SCALE_MAX);
 
         }
         else if (hid.mouseDown == 1)
@@ -807,10 +832,12 @@ ZTR_DRAW (ztrDraw)
                 fadeInAnimCurve = 1.f;
                 labelPosAnimCurve = 1.f;
 
-                cam->yaw = cam->yawAnimEnd + cam->yawAnimAmount*(1.f - animCurve);
-                cam->pitch = cam->pitchAnimEnd + cam->pitchAnimAmount*(1.f - animCurve);
-
-                cam->orthScale = CAM_ORTH_SCALE_MAX - cam->orthScaleDiff*(1.f - animCurve);
+                cam->yaw =
+                    cam->yawAnimEnd + cam->yawAnimAmount*(1.f - animCurve);
+                cam->pitch =
+                    cam->pitchAnimEnd + cam->pitchAnimAmount*(1.f - animCurve);
+                cam->orthScale =
+                    CAM_ORTH_SCALE_MAX - cam->orthScaleDiff*(1.f - animCurve);
 
                 g_scene.animT += g_scene.animStep;
             }
@@ -857,13 +884,15 @@ ZTR_DRAW (ztrDraw)
         // float deltaTime = (float) (g_scene.currentTime - g_scene.lastTime);
         g_scene.lastTime = g_scene.currentTime;
 
-
         // 射影行列とビュー行列を作成します。
         float ratio = (float) g_scene.screenDims.Y/(float) g_scene.screenDims.X;
         float orth = cam->orthScale;
-        hmm_mat4 projection = HMM_Orthographic (-orth, orth, -ratio*orth, ratio*orth, CAM_NEAR, CAM_FAR);
-        hmm_mat4 view = HMM_LookAt (cam->pos, CAM_LOOKAT_CENTER, CAM_LOOKAT_UP);
-
+        hmm_mat4 projection = HMM_Orthographic (-orth, orth,
+                                                -ratio*orth, ratio*orth,
+                                                CAM_NEAR, CAM_FAR);
+        hmm_mat4 view = HMM_LookAt (cam->pos,
+                                    CAM_LOOKAT_CENTER,
+                                    CAM_LOOKAT_UP);
 
         // 射影行列とビュー行列をシェーダープログラムに渡します。
         for (int i=0 ; i<g_scene.shaderCount; i++)
@@ -872,15 +901,22 @@ ZTR_DRAW (ztrDraw)
 
             glUseProgram(shader->program);
 
-            GLuint viewMatrixLoc = glGetUniformLocation (shader->program, "view");
-            glUniformMatrix4fv (viewMatrixLoc, 1, GL_FALSE, &view.Elements[0][0]);
+            GLuint viewMatrixLoc =
+                glGetUniformLocation (shader->program, "view");
+            glUniformMatrix4fv (viewMatrixLoc,
+                                1,
+                                GL_FALSE,
+                                &view.Elements[0][0]);
             GL_CHECK_ERROR ();
 
-            GLuint projectionMatrixLoc = glGetUniformLocation (shader->program, "projection");
-            glUniformMatrix4fv (projectionMatrixLoc, 1, GL_FALSE, &projection.Elements[0][0]);
+            GLuint projectionMatrixLoc =
+                glGetUniformLocation (shader->program, "projection");
+            glUniformMatrix4fv (projectionMatrixLoc,
+                                1,
+                                GL_FALSE,
+                                &projection.Elements[0][0]);
             GL_CHECK_ERROR ();
         }
-
 
         // メッシュの位置、回転情報をシェーダープログラムに渡します。
         for (int i=0 ; i<g_scene.meshCount; i++)
@@ -891,32 +927,44 @@ ZTR_DRAW (ztrDraw)
 
             glUseProgram (shader->program);
 
-            // Doing this anyway, even though our scene is static
             mesh->model = mesh->T*mesh->R*mesh->S;
 
-            GLuint rotateMatrixLoc = glGetUniformLocation (shader->program, "rotate");
-            glUniformMatrix4fv (rotateMatrixLoc, 1, GL_FALSE, &mesh->R.Elements[0][0]);
+            GLuint rotateMatrixLoc =
+                glGetUniformLocation (shader->program, "rotate");
+            glUniformMatrix4fv (rotateMatrixLoc,
+                                1,
+                                GL_FALSE,
+                                &mesh->R.Elements[0][0]);
 
-            GLuint modelMatrixLoc = glGetUniformLocation (shader->program, "model");
-            glUniformMatrix4fv (modelMatrixLoc, 1, GL_FALSE, &mesh->model.Elements[0][0]);
+            GLuint modelMatrixLoc =
+                glGetUniformLocation (shader->program, "model");
+            glUniformMatrix4fv (modelMatrixLoc,
+                                1,
+                                GL_FALSE,
+                                &mesh->model.Elements[0][0]);
 
+            // VAOを紐づけます。
             glBindVertexArray (mesh->VAO);
             GL_CHECK_ERROR ();
 
-            glDrawElements (shader->elementType, mesh->indicesCount, GL_UNSIGNED_SHORT, 0);
+            // シェーダープログラムを経由して、三角形を描きます。
+            glDrawElements (shader->elementType,
+                            mesh->indicesCount,
+                            GL_UNSIGNED_SHORT,
+                            0);
             GL_CHECK_ERROR ();
 
             glBindVertexArray (0);
             GL_CHECK_ERROR ();
         }
 
-
         // 懐中電灯の効果のためカメラの位置をシェーダープログラムに渡します。
         glUseProgram (g_scene.objectShader->program);
         GL_CHECK_ERROR ();
 
         hmm_vec3 lightPos = HMM_Vec3 (1,1,2);
-        GLint lightPosLoc = glGetUniformLocation (g_scene.objectShader->program, "lightPos");
+        GLint lightPosLoc =
+            glGetUniformLocation (g_scene.objectShader->program, "lightPos");
         glUniform3f (lightPosLoc, cam->pos[0], cam->pos[1], cam->pos[2]);
         GL_CHECK_ERROR ();
     }

@@ -78,12 +78,12 @@ PLATFORM_OPEN_FILE (openFile)
 
     // Get the layer
     CAEAGLLayer *eaglLayer = (CAEAGLLayer *)self.layer;
-    eaglLayer.opaque = TRUE;
+    eaglLayer.opaque = YES;
 
     eaglLayer.contentsScale = screenScale;
     eaglLayer.drawableProperties =
         [NSDictionary dictionaryWithObjectsAndKeys:
-            [NSNumber numberWithBool:FALSE],
+            [NSNumber numberWithBool:NO],
             kEAGLDrawablePropertyRetainedBacking,
             kEAGLColorFormatRGBA8,
             kEAGLDrawablePropertyColorFormat,
@@ -143,7 +143,7 @@ PLATFORM_OPEN_FILE (openFile)
     ztrInit(&g_platform);
     ztrResize (0, backingWidth, backingHeight);
 
-    _animating = FALSE;
+    _animating = NO;
     _animationFrameInterval = 1;
     _displayLink = nil;
 
@@ -256,7 +256,7 @@ PLATFORM_OPEN_FILE (openFile)
         // Have the display link run on the default runn loop (and the main thread)
         [_displayLink addToRunLoop:[NSRunLoop currentRunLoop] forMode:NSDefaultRunLoopMode];
 
-		_animating = TRUE;
+		_animating = YES;
 	}
 }
 
@@ -266,7 +266,7 @@ PLATFORM_OPEN_FILE (openFile)
 	{
         [_displayLink invalidate];
         _displayLink = nil;
-		_animating = FALSE;
+		_animating = NO;
 	}
 }
 

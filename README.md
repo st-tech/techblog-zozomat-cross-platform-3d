@@ -15,13 +15,17 @@
 ## ビルド要件
 
 macOS: macOS 10.13 （High Sierra） 以降, Xcode 9.3 以降
+
 iOS: iOS 11.0 以降, Xcode 9.0 以降
+
 Android: Android 5.0（API レベル 21）以降, Android Studio 1.0 以降
 
 ## ランタイム要件
 
 macOS: macOS 10.13 （High Sierra） 以降
+
 iOS: iOS 11.0 以降
+
 Android: Android 5.0（API レベル 21） 以降
 
 ## ライセンシング

@@ -23,9 +23,6 @@
 /* Begin PBXFileReference section */
 		BC016AE624724C9100B1232A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		BC14B13B22F0268E00335B2A /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
-		BC2DDF54246D4BAB00D7FCF1 /* libfoot-model-binary.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = "libfoot-model-binary.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		BC2DDF68246D4CFC00D7FCF1 /* libfoot-model-binary-osx.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = "libfoot-model-binary-osx.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		BC2DDF6A246D4D9E00D7FCF1 /* libfoot-model-binary-osx.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = "libfoot-model-binary-osx.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC80518722F3E5170070EB5E /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		BC80518922F3E5170070EB5E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BC80518A22F3E5170070EB5E /* RenderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RenderViewController.m; sourceTree = "<group>"; };
@@ -35,9 +32,6 @@
 		BC80519022F3E5170070EB5E /* RenderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RenderViewController.h; sourceTree = "<group>"; };
 		BC8051A222F3E5980070EB5E /* HandmadeMath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HandmadeMath.h; sourceTree = "<group>"; };
 		BC8051A322F3E5980070EB5E /* tinyobj_loader_c.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tinyobj_loader_c.h; sourceTree = "<group>"; };
-		BC85289423D65B93002A7D4A /* libfoot-model-binary.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = "libfoot-model-binary.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		BC8528A623D65C2F002A7D4A /* libfoot-model-binary copy.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = "libfoot-model-binary copy.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		BC8528A823D65C5A002A7D4A /* libfoot-model-binary-osx.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = "libfoot-model-binary-osx.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC8528AA23D90CD2002A7D4A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		BC8528AC23D90CE0002A7D4A /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
 		BC8528AE23D90EF2002A7D4A /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -72,9 +66,6 @@
 		BC14B13A22F0268E00335B2A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				BC2DDF6A246D4D9E00D7FCF1 /* libfoot-model-binary-osx.a */,
-				BC2DDF68246D4CFC00D7FCF1 /* libfoot-model-binary-osx.a */,
-				BC2DDF54246D4BAB00D7FCF1 /* libfoot-model-binary.a */,
 				BC8528BC23D911ED002A7D4A /* ImageIO.framework */,
 				BC8528BA23D911C3002A7D4A /* QuartzCore.framework */,
 				BC8528B823D911BB002A7D4A /* Quartz.framework */,
@@ -85,9 +76,6 @@
 				BC8528AE23D90EF2002A7D4A /* AppKit.framework */,
 				BC8528AC23D90CE0002A7D4A /* CoreImage.framework */,
 				BC8528AA23D90CD2002A7D4A /* CoreGraphics.framework */,
-				BC8528A823D65C5A002A7D4A /* libfoot-model-binary-osx.a */,
-				BC8528A623D65C2F002A7D4A /* libfoot-model-binary copy.a */,
-				BC85289423D65B93002A7D4A /* libfoot-model-binary.a */,
 				BC14B13B22F0268E00335B2A /* OpenGL.framework */,
 			);
 			name = Frameworks;
@@ -346,7 +334,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = NO;
-				CODE_SIGN_ENTITLEMENTS = "ztr-osx/footrenderer.entitlements";
+				CODE_SIGN_ENTITLEMENTS = "";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = "";
@@ -377,7 +365,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = NO;
-				CODE_SIGN_ENTITLEMENTS = "ztr-osx/footrenderer.entitlements";
+				CODE_SIGN_ENTITLEMENTS = "";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 8238P2PME9;

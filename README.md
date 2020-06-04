@@ -2,15 +2,15 @@
 
 ## 概要
 
+このサンプルは、次の記事に関連しています。
+
+[ZOZOMATのクロスプラットフォーム3D](https://test-zozotechblog.hatenablog.com/entry/feature/20200518-zozomat_cross_platform_3d)
+
 [ZOZOMAT](https://zozo.jp/zozomat/)の3D計測結果を表示するためにOpenGLおよびC ++クロスプラットフォームコードを選択した理由を説明します。
 
 そして、サンプルコードと、クロスプラットフォーム実装のベストプラクティスについて説明します。
 
 ![zozomat_pr_001](./images/bunny01.png)
-
-このサンプルは、次の記事に関連しています。
-
-[ZOZOMATのクロスプラットフォーム3D](https://test-zozotechblog.hatenablog.com/entry/feature/20200518-zozomat_cross_platform_3d)
 
 ## ビルド要件
 

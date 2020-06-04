@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		BC96B83024860828005E9E96 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BCACF51724725ADF00B76D3D /* SceneDelegate.m */; };
 		BCACF51524725ADF00B76D3D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BCACF51424725ADF00B76D3D /* AppDelegate.m */; };
 		BCACF51E24725ADF00B76D3D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BCACF51C24725ADF00B76D3D /* Main.storyboard */; };
 		BCACF52024725AE000B76D3D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BCACF51F24725AE000B76D3D /* Assets.xcassets */; };
@@ -24,8 +23,6 @@
 		BCACF51124725ADF00B76D3D /* ZOZO Tech Renderer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ZOZO Tech Renderer.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BCACF51324725ADF00B76D3D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		BCACF51424725ADF00B76D3D /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		BCACF51624725ADF00B76D3D /* SceneDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SceneDelegate.h; sourceTree = "<group>"; };
-		BCACF51724725ADF00B76D3D /* SceneDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SceneDelegate.m; sourceTree = "<group>"; };
 		BCACF51D24725ADF00B76D3D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		BCACF51F24725AE000B76D3D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BCACF52224725AE000B76D3D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -73,8 +70,6 @@
 				BCACF5482472636300B76D3D /* RenderView.h */,
 				BCACF5472472636300B76D3D /* RenderView.m */,
 				BCACF51424725ADF00B76D3D /* AppDelegate.m */,
-				BCACF51624725ADF00B76D3D /* SceneDelegate.h */,
-				BCACF51724725ADF00B76D3D /* SceneDelegate.m */,
 				BCACF51C24725ADF00B76D3D /* Main.storyboard */,
 				BCACF51F24725AE000B76D3D /* Assets.xcassets */,
 				BCACF52124725AE000B76D3D /* LaunchScreen.storyboard */,
@@ -186,7 +181,6 @@
 			files = (
 				BCACF5492472636300B76D3D /* RenderView.m in Sources */,
 				BCACF51524725ADF00B76D3D /* AppDelegate.m in Sources */,
-				BC96B83024860828005E9E96 /* SceneDelegate.m in Sources */,
 				BCADE41D2473EE7900921C90 /* ztr_platform_independent_layer.cpp in Sources */,
 				BCACF52624725AE000B76D3D /* main.m in Sources */,
 			);
@@ -219,6 +213,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = NO;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = "";
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -245,6 +240,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = NO;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = "";
 				GCC_PREPROCESSOR_DEFINITIONS = (

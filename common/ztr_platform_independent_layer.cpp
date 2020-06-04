@@ -292,12 +292,12 @@ UpdateCamPos (camera_t *cam)
 
     dir.X =
         HMM_CosF (HMM_ToRadians (cam->yaw)) *
-        HMM_CosF(HMM_ToRadians (cam->pitch));
+        HMM_CosF (HMM_ToRadians (cam->pitch));
     dir.Y =
         HMM_SinF (HMM_ToRadians (cam->pitch));
     dir.Z =
         HMM_SinF (HMM_ToRadians (cam->yaw)) *
-        HMM_CosF(HMM_ToRadians (cam->pitch));
+        HMM_CosF (HMM_ToRadians (cam->pitch));
 
     cam->pos = HMM_NormalizeVec3 (dir)*cam->radius;
 }

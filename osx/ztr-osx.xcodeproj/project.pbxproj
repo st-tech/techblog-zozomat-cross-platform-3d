@@ -14,6 +14,10 @@
 		BC80519522F3E5170070EB5E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BC80518E22F3E5170070EB5E /* AppDelegate.m */; };
 		BC8E1B98247245EC0084EA2F /* res in Resources */ = {isa = PBXBuildFile; fileRef = BC8E1B97247245EC0084EA2F /* res */; };
 		BCADE41A2473EE1300921C90 /* ztr_platform_independent_layer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BCADE4192473EE1300921C90 /* ztr_platform_independent_layer.cpp */; };
+		BCAF43182488A5500005DFE4 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCAF43172488A5500005DFE4 /* OpenGL.framework */; };
+		BCAF431A2488A5680005DFE4 /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCAF43192488A5680005DFE4 /* AppKit.framework */; };
+		BCAF431C2488A5820005DFE4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCAF431B2488A5820005DFE4 /* Foundation.framework */; };
+		BCAF43202488A5A00005DFE4 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCAF431F2488A5A00005DFE4 /* QuartzCore.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +34,10 @@
 		BC8E1B97247245EC0084EA2F /* res */ = {isa = PBXFileReference; lastKnownFileType = folder; name = res; path = ../../res; sourceTree = "<group>"; };
 		BCADE4182473EE1300921C90 /* ztr_platform_abstraction_layer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ztr_platform_abstraction_layer.h; sourceTree = "<group>"; };
 		BCADE4192473EE1300921C90 /* ztr_platform_independent_layer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ztr_platform_independent_layer.cpp; sourceTree = "<group>"; };
+		BCAF43172488A5500005DFE4 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
+		BCAF43192488A5680005DFE4 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		BCAF431B2488A5820005DFE4 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		BCAF431F2488A5A00005DFE4 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		BCC20AC122DD683F009F3FCC /* ztr-osx.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ztr-osx.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -38,6 +46,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BCAF43202488A5A00005DFE4 /* QuartzCore.framework in Frameworks */,
+				BCAF431C2488A5820005DFE4 /* Foundation.framework in Frameworks */,
+				BCAF431A2488A5680005DFE4 /* AppKit.framework in Frameworks */,
+				BCAF43182488A5500005DFE4 /* OpenGL.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -47,6 +59,10 @@
 		BC14B13A22F0268E00335B2A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				BCAF431F2488A5A00005DFE4 /* QuartzCore.framework */,
+				BCAF431B2488A5820005DFE4 /* Foundation.framework */,
+				BCAF43192488A5680005DFE4 /* AppKit.framework */,
+				BCAF43172488A5500005DFE4 /* OpenGL.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -338,7 +354,7 @@
 				CODE_SIGN_ENTITLEMENTS = "";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = 8238P2PME9;
+				DEVELOPMENT_TEAM = "";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					GLES_SILENCE_DEPRECATION,
 					GL_SILENCE_DEPRECATION,

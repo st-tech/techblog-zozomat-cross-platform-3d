@@ -8,21 +8,16 @@
 
 /* Begin PBXBuildFile section */
 		BC016AE724724C9100B1232A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BC016AE624724C9100B1232A /* main.m */; };
-		BC14B13C22F0268E00335B2A /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC14B13B22F0268E00335B2A /* OpenGL.framework */; };
 		BC80519122F3E5170070EB5E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BC80518922F3E5170070EB5E /* Assets.xcassets */; };
 		BC80519222F3E5170070EB5E /* RenderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC80518A22F3E5170070EB5E /* RenderViewController.m */; };
 		BC80519322F3E5170070EB5E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BC80518B22F3E5170070EB5E /* Main.storyboard */; };
 		BC80519522F3E5170070EB5E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BC80518E22F3E5170070EB5E /* AppDelegate.m */; };
-		BC8528AB23D90CD2002A7D4A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC8528AA23D90CD2002A7D4A /* CoreGraphics.framework */; };
-		BC8528AF23D90EF2002A7D4A /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC8528AE23D90EF2002A7D4A /* AppKit.framework */; };
-		BC8528B123D91109002A7D4A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC8528B023D91109002A7D4A /* Foundation.framework */; };
 		BC8E1B98247245EC0084EA2F /* res in Resources */ = {isa = PBXBuildFile; fileRef = BC8E1B97247245EC0084EA2F /* res */; };
 		BCADE41A2473EE1300921C90 /* ztr_platform_independent_layer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BCADE4192473EE1300921C90 /* ztr_platform_independent_layer.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		BC016AE624724C9100B1232A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		BC14B13B22F0268E00335B2A /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
 		BC80518722F3E5170070EB5E /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		BC80518922F3E5170070EB5E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BC80518A22F3E5170070EB5E /* RenderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RenderViewController.m; sourceTree = "<group>"; };
@@ -32,16 +27,6 @@
 		BC80519022F3E5170070EB5E /* RenderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RenderViewController.h; sourceTree = "<group>"; };
 		BC8051A222F3E5980070EB5E /* HandmadeMath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HandmadeMath.h; sourceTree = "<group>"; };
 		BC8051A322F3E5980070EB5E /* tinyobj_loader_c.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tinyobj_loader_c.h; sourceTree = "<group>"; };
-		BC8528AA23D90CD2002A7D4A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		BC8528AC23D90CE0002A7D4A /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
-		BC8528AE23D90EF2002A7D4A /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
-		BC8528B023D91109002A7D4A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		BC8528B223D91113002A7D4A /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
-		BC8528B423D9117A002A7D4A /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
-		BC8528B623D91184002A7D4A /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = System/Library/Frameworks/Carbon.framework; sourceTree = SDKROOT; };
-		BC8528B823D911BB002A7D4A /* Quartz.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quartz.framework; path = System/Library/Frameworks/Quartz.framework; sourceTree = SDKROOT; };
-		BC8528BA23D911C3002A7D4A /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
-		BC8528BC23D911ED002A7D4A /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
 		BC8E1B97247245EC0084EA2F /* res */ = {isa = PBXFileReference; lastKnownFileType = folder; name = res; path = ../../res; sourceTree = "<group>"; };
 		BCADE4182473EE1300921C90 /* ztr_platform_abstraction_layer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ztr_platform_abstraction_layer.h; sourceTree = "<group>"; };
 		BCADE4192473EE1300921C90 /* ztr_platform_independent_layer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ztr_platform_independent_layer.cpp; sourceTree = "<group>"; };
@@ -53,10 +38,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BC8528AF23D90EF2002A7D4A /* AppKit.framework in Frameworks */,
-				BC8528B123D91109002A7D4A /* Foundation.framework in Frameworks */,
-				BC8528AB23D90CD2002A7D4A /* CoreGraphics.framework in Frameworks */,
-				BC14B13C22F0268E00335B2A /* OpenGL.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -66,17 +47,6 @@
 		BC14B13A22F0268E00335B2A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				BC8528BC23D911ED002A7D4A /* ImageIO.framework */,
-				BC8528BA23D911C3002A7D4A /* QuartzCore.framework */,
-				BC8528B823D911BB002A7D4A /* Quartz.framework */,
-				BC8528B623D91184002A7D4A /* Carbon.framework */,
-				BC8528B423D9117A002A7D4A /* Cocoa.framework */,
-				BC8528B223D91113002A7D4A /* CoreFoundation.framework */,
-				BC8528B023D91109002A7D4A /* Foundation.framework */,
-				BC8528AE23D90EF2002A7D4A /* AppKit.framework */,
-				BC8528AC23D90CE0002A7D4A /* CoreImage.framework */,
-				BC8528AA23D90CD2002A7D4A /* CoreGraphics.framework */,
-				BC14B13B22F0268E00335B2A /* OpenGL.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";

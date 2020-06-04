@@ -6,9 +6,9 @@
 //
 
 #import <Cocoa/Cocoa.h>
-#import <QuartzCore/QuartzCore.h>
-#import <AppKit/AppKit.h>
-#import <Foundation/Foundation.h>
+//#import <QuartzCore/QuartzCore.h>
+//#import <AppKit/AppKit.h>
+//#import <Foundation/Foundation.h>
 
 @interface RenderViewController : NSOpenGLView {
 	CVDisplayLinkRef displayLink;

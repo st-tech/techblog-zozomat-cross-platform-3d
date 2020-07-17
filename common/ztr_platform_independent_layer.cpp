@@ -191,7 +191,7 @@ InitCam (camera_t *cam)
 {
     cam->pos = HMM_Vec3 (0.f, 0.f, 0.f);
     cam->radius = CAM_RADIUS_DEFAULT;
-    cam->orthScale = CAM_ORTH_SCALE_DEFAULT;;
+    cam->orthScale = CAM_ORTH_SCALE_DEFAULT;
 
     cam->pitch = CAM_PITCH_DEFAULT;
     cam->yaw = CAM_YAW_DEFAULT;
